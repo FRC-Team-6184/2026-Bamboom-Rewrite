@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.swerve.TeleopDriveCmd;
-import frc.robot.subsystems.ShooterSubsys;
+// import frc.robot.subsystems.ShooterSubsys;
 import frc.robot.subsystems.SwerveSubsys;
 
 /**
@@ -19,7 +19,7 @@ import frc.robot.subsystems.SwerveSubsys;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
-  private ShooterSubsys shooter = Constants.Subsystems.SHOOTER_SUBSYS;
+  // private ShooterSubsys shooter = Constants.Subsystems.SHOOTER_SUBSYS;
   private SwerveSubsys swerve = Constants.Subsystems.SWERVE_SUBSYS;
 
 

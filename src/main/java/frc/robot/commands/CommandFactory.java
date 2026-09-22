@@ -34,86 +34,58 @@ import frc.robot.subsystems.SwerveSubsys;
 
 import frc.robot.Constants.CommandEnums;
 
-/* TODO:
- * Subsystem Factory class?
- */
 public class CommandFactory {
 
-    // Subsystems (Maybe make a SubsysFactory class?)
+    // TODO: SubsystemFactory class for getting subsystems?
+    // Subsystems
     private static SwerveSubsys swerveSubsys = new SwerveSubsys();
 
-    // FlywheelHighSpeedCmd cmdFlywheelHigh;
-    // FlywheelLowSpeedCmd cmdFlywheelLow;
-    // IntakePivotDownCmd cmdPivotDown;
-    // BlenderCmd cmdBlender;
-    // IntakePivotUpCmd cmdPivotUp;
-    // HighShooterRPMCmd cmdHighSpeed;
-    // LowShooterRPMCmd cmdLowSpeed;
-    // IntakeCmd cmdIntake;
-    // ShooterCmd cmdShooter;
-    // TempShooterCmd cmdTempShooter;
-    // IntakePurgeCmd cmdIntakePurge;
-    // IntakePivotCmd cmdIntakePivot;
-    // XFormationCmd cmdXFormation;
-    // ShooterRPMControlCmd cmdFlywheelRPM;
-    // ResetGyroCmd cmdResetGyro;
-    TeleopDriveCmd cmdTeleopDrive;
-    // IntakePivotLimitSwitchCmd cmdLimitSwitchPivot;
-    // ShooterRPMControlCmd cmdIncreaseRPM;
-    // ShooterRPMControlCmd cmdDecreaseRPM;
-    // LockOnCmd cmdLockon;
-
-    // ShootAtSpeedCmd cmdFlywheelUp;
-    // ShootAtSpeedCmd cmdFlywheelLeft;
-    // ShootAtSpeedCmd cmdFlywheelRight;
-    // ShootAtSpeedCmd cmdFlywheelDown;
-
-    // AutonomousIntakeDownCmd cmdAutoIntakePivot;
-    // AutonomousStartIntakeCmd cmdAutoStartIntake;
-    // BlenderCmd cmdAutoBlender;
-
-    private CommandFactory() {}
-
     // TODO: Make enum return respective initialized command
-    public static Command getCommand(CommandEnums e) {
+
+    /**
+     * @return A fully initialized command
+     * @see {@code Constants.java} for a list of command enumerators
+     */
+    public static Command getCommand(CommandEnums cmdEnum) {
         // Blender
-        if (e == CommandEnums.BLENDER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.BLENDER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Flywheel
-        if (e == CommandEnums.FLYWHEEL_HIGH_SPEED_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.FLYWHEEL_LOW_SPEED_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.FLYWHEEL_HIGH_SPEED_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.FLYWHEEL_LOW_SPEED_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Intake
-        if (e == CommandEnums.AUTONOMOUS_INTAKE_DOWN_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.AUTONOMOUS_START_INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.INTAKE_MANAGER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.INTAKE_PIVOT_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.INTAKE_PIVOT_DOWN_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.INTAKE_PIVOT_LIMIT_SWITCH_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.INTAKE_PIVOT_UP_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.INTAKE_PURGE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.AUTONOMOUS_INTAKE_DOWN_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.AUTONOMOUS_START_INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.INTAKE_MANAGER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.INTAKE_PIVOT_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.INTAKE_PIVOT_DOWN_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.INTAKE_PIVOT_LIMIT_SWITCH_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.INTAKE_PIVOT_UP_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.INTAKE_PURGE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Other
-        if (e == CommandEnums.LOCK_ON_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.RESET_GYRO_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.LOCK_ON_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.RESET_GYRO_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Shooter
-        if (e == CommandEnums.CHANGE_RPM_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.HIGH_SHOOTER_RPM_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.LOW_SHOOTER_RPM_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.PRESET_SHOOT_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.SHOOT_AT_SPEED_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.SHOOTER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.SHOOTER_RPM_CONTROL_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (e == CommandEnums.TEMP_SHOOTER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.CHANGE_RPM_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.HIGH_SHOOTER_RPM_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.LOW_SHOOTER_RPM_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.PRESET_SHOOT_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.SHOOT_AT_SPEED_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.SHOOTER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.SHOOTER_RPM_CONTROL_CMD) return new ShooterRPMControlCommand(kShooterSubsystem, 100.0 / 60.0);; // TODO: Pass Args
+        if (cmdEnum == CommandEnums.TEMP_SHOOTER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Swerve
-        if (e == CommandEnums.TELEOP_DRIVE_CMD) return new TeleopDriveCmd(swerveSubsys); // TODO: Pass Args
-        if (e == CommandEnums.XFORMATION_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.TELEOP_DRIVE_CMD) return new TeleopDriveCmd(swerveSubsys); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.XFORMATION_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
 
-        // If invalid e
+        // If invalid cmdEnum
         throw new IllegalArgumentException("Unknown command, check Constants.java");
     }
 
+    private CommandFactory() {}
 }

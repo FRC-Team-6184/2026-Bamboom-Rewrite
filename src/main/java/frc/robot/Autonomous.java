@@ -5,33 +5,29 @@ import static edu.wpi.first.units.Units.Seconds;
 
 import com.pathplanner.lib.auto.NamedCommands;
 
+import frc.robot.Constants.CommandEnums;
+import frc.robot.commands.CommandFactory;
+
 /* TODO:
  * Implement all features relating to autonomous mode
- * 
- * Copy and paste the related stuff from RobotContainer.java in the old repo
  */
 public class Autonomous {
 
-    AutonomousIntakeDownCommand cmdAutoIntakePivot;
-    AutonomousStartIntakeCommand cmdAutoStartIntake;
-    BlenderCommand cmdAutoBlender;
-
     public Autonomous() {
         // -William TODO: I think these were glitching things out, and these need to be done in a more robust and sensible way anyways
-        // -Reece TODO: Need to make cmdAutoIntakeDown and related actual commands
-        // -Reece I split up the methods the way I did because I don't want to store commands
-        // into a variable of their type, because then we need to import the libraries just for that.
         NamedCommands.registerCommand(
             "AutoIntakeDown", 
-            cmdAutoIntakeDown // TODO: new cmdAutoIntakeDown()
+            CommandFactory.getCommand(CommandEnums.AUTONOMOUS_INTAKE_DOWN_CMD)
         );
         NamedCommands.registerCommand(
             "AutoIntakeStart", 
-            cmdAutoStartIntake // TODO: new cmdAutoStartIntake()
+            CommandFactory.getCommand(CommandEnums.AUTONOMOUS_START_INTAKE_CMD) 
         );
+        // -Reece TODO: Verify that the new BLENDER_CMD is the same as the old cmdAutoBlender
+        // cuz it might not be working otherwise
         NamedCommands.registerCommand(
             "BlenderCommand", 
-            cmdAutoBlender.withTimeout(Seconds.of(4.0))
+            CommandFactory.getCommand(CommandEnums.BLENDER_CMD).withTimeout(Seconds.of(4.0))
         );
         // NamedCommands.registerCommand("IntakePivotUpCommand", cmdPivotUp.withTimeout(Seconds.of(0.5)));
     }

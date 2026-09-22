@@ -2,6 +2,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.Constants.CommandEnums;
+import frc.robot.commands.CommandFactory;
 
 /* TODO:
  * Implement the bindings for the main controller and co-controller
@@ -24,38 +26,44 @@ public class ControllerBindings {
     }
 
     private void configureBindings() {
-        // TODO: Swerve drive stuffs idk
+        DRIVE_CONTROLLER.x().toggleOnTrue(
+            CommandFactory.getCommand(CommandEnums.XFORMATION_CMD));
 
-        // mainController.x().toggleOnTrue(cmdXFormation);
-        // mainController.rightBumper().and(mainController.leftBumper()).whileTrue(cmdResetGyro);
-        // mainController.b().whileTrue(cmdLockon);
+        DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).whileTrue(
+            CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD));
 
-        // codriveController.povUp().onTrue(cmdIncreaseRPM);
-        // codriveController.povDown().onTrue(cmdDecreaseRPM);
+        DRIVE_CONTROLLER.b().whileTrue(
+            CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD));
+        
+        // CO_DRIVE_CONTROLLER.povUp().onTrue(cmdIncreaseRPM);
+        // CO_DRIVE_CONTROLLER.povDown().onTrue(cmdDecreaseRPM);
 
-        // codriveController.axisGreaterThan(3, 0.8).whileTrue(cmdBlender);
+        // cmdIncreaseRPM = new ShooterRPMControlCommand(kShooterSubsystem, 100.0 / 60.0);
+        // cmdDecreaseRPM = new ShooterRPMControlCommand(kShooterSubsystem, -100.0 / 60.0);
 
-        // codriveController.L1().whileTrue(cmdFlywheelHigh);
-        // codriveController.R1().toggleOnTrue(cmdIntake);
-        // codriveController.axisGreaterThan(4, 0.8).whileTrue(cmdIntakePurge);
+        // CO_DRIVE_CONTROLLER.axisGreaterThan(3, 0.8).whileTrue(cmdBlender);
 
-
-        // codriveController.axisGreaterThan(5, 0.12).or(codriveController.axisLessThan(5, -0.12)).whileTrue(cmdIntakePivot); //TODO: make this go to a proportional intake pivot command
-
-        // codriveController.axisLessThan(5, -0.6).whileFalse(cmdLimitSwitchPivot).whileTrue(cmdIntakePivot);
-
-        // codriveController.povUp().onTrue(cmdIncreaseRPM);
-        // codriveController.povDown().onTrue(cmdDecreaseRPM);
-
-        // codriveController.povUp().whileTrue(cmdFlywheelUp);
-        // codriveController.povDown().whileTrue(cmdFlywheelDown);
-        // codriveController.povLeft().whileTrue(cmdFlywheelLeft);
-        // codriveController.povRight().whileTrue(cmdFlywheelRight);
+        // CO_DRIVE_CONTROLLER.L1().whileTrue(cmdFlywheelHigh);
+        // CO_DRIVE_CONTROLLER.R1().toggleOnTrue(cmdIntake);
+        // CO_DRIVE_CONTROLLER.axisGreaterThan(4, 0.8).whileTrue(cmdIntakePurge);
 
 
-        // codriveController.pov
+        // CO_DRIVE_CONTROLLER.axisGreaterThan(5, 0.12).or(CO_DRIVE_CONTROLLER.axisLessThan(5, -0.12)).whileTrue(cmdIntakePivot); //TODO: make this go to a proportional intake pivot command
 
-        // codriveController.povCenter().whileFalse(cmdLowSpeed);
+        // CO_DRIVE_CONTROLLER.axisLessThan(5, -0.6).whileFalse(cmdLimitSwitchPivot).whileTrue(cmdIntakePivot);
+
+        // CO_DRIVE_CONTROLLER.povUp().onTrue(cmdIncreaseRPM);
+        // CO_DRIVE_CONTROLLER.povDown().onTrue(cmdDecreaseRPM);
+
+        // CO_DRIVE_CONTROLLER.povUp().whileTrue(cmdFlywheelUp);
+        // CO_DRIVE_CONTROLLER.povDown().whileTrue(cmdFlywheelDown);
+        // CO_DRIVE_CONTROLLER.povLeft().whileTrue(cmdFlywheelLeft);
+        // CO_DRIVE_CONTROLLER.povRight().whileTrue(cmdFlywheelRight);
+
+
+        // CO_DRIVE_CONTROLLER.pov
+
+        // CO_DRIVE_CONTROLLER.povCenter().whileFalse(cmdLowSpeed);
     }
 
 }
