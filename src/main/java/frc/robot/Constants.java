@@ -1,5 +1,7 @@
 package frc.robot;
 
+import com.ctre.phoenix6.configs.Slot0Configs;
+import com.ctre.phoenix6.configs.SlotConfigs;
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
@@ -84,7 +86,31 @@ public final class Constants {
     }
 
     public static final class MotorConstants {
+        public static final double TOP_SHOOTER_KS = 0.029245;
+        public static final double TOP_SHOOTER_KV = 0.11449;
+        public static final double TOP_SHOOTER_KA = 0.005078;
+        public static final double TOP_SHOOTER_KP = 0.070927;
+        public static final Slot0Configs TOP_SHOOTER_CONFIG = new Slot0Configs().withKS(TOP_SHOOTER_KS).withKV(TOP_SHOOTER_KV).withKA(TOP_SHOOTER_KA).withKP(TOP_SHOOTER_KP);
 
+        public static final double KICKER_SHOOTER_KS = 0.027235;
+        public static final double KICKER_SHOOTER_KV = 0.11021;
+        public static final double KICKER_SHOOTER_KA = 0.0019461;
+        public static final double KICKER_SHOOTER_KP = 0.13694;
+        public static final Slot0Configs KICKER_SHOOTER_CONFIG = new Slot0Configs().withKS(KICKER_SHOOTER_KS).withKV(KICKER_SHOOTER_KV).withKA(KICKER_SHOOTER_KA).withKP(KICKER_SHOOTER_KP);
+
+        //TODO: check if this motor needs to be retested, things seem to have changed here for some reason physically
+        public static final double BLENDER_SHOOTER_KS = 0.049802;
+        public static final double BLENDER_SHOOTER_KV = 0.11111;
+        public static final double BLENDER_SHOOTER_KA = 0.0029793;
+        public static final double BLENDER_SHOOTER_KP = 0.14905;
+        public static final Slot0Configs BLENDER_SHOOTER_CONFIG = new Slot0Configs().withKS(BLENDER_SHOOTER_KS).withKV(BLENDER_SHOOTER_KV).withKA(BLENDER_SHOOTER_KA).withKP(BLENDER_SHOOTER_KP);
+
+        //TODO: Find the feedforward constants because we haven't found them yet
+        public static final double ACTIVE_INTAKE_KS = 0;
+        public static final double ACTIVE_INTAKE_KV = 0;
+        public static final double ACTIVE_INTAKE_KA = 0;
+        public static final double ACTIVE_INTAKE_KP = 0;
+        public static final Slot0Configs ACTIVE_INTAKE_CONFIG = new Slot0Configs().withKS(ACTIVE_INTAKE_KS).withKV(ACTIVE_INTAKE_KV).withKA(ACTIVE_INTAKE_KA).withKP(ACTIVE_INTAKE_KP);
     }
 
     public static final class MotorControllers {
