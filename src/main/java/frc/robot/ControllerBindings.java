@@ -12,13 +12,13 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
  // Subsystems -> Commands -> ControllerBinding
 public class ControllerBindings {
-    private final CommandXboxController kDriveController;
-    private final CommandPS5Controller kCoDriveController;
+    private final CommandXboxController DRIVE_CONTROLLER;
+    private final CommandPS5Controller CO_DRIVE_CONTROLLER;
 
     /** Initialize Controllers/Bindings */
     public ControllerBindings() {
-        kDriveController = Constants.Controller.XBOX;
-        kCoDriveController = Constants.Controller.PS5;
+        DRIVE_CONTROLLER = Constants.Controller.XBOX;
+        CO_DRIVE_CONTROLLER = Constants.Controller.PS5;
 
         configureBindings();
     }

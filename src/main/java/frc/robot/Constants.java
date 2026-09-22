@@ -190,56 +190,57 @@ public final class Constants {
     }
 
     public static final class SoftwareObjects {
-        public static final NetworkTableInstance networkTableInstance = NetworkTableInstance.getDefault();
+        public static final NetworkTableInstance NETWORK_TABLE_INSTANCE = NetworkTableInstance.getDefault();
 
         public static final MAXSwerveModule FRONT_LEFT_MODULE = new MAXSwerveModule(MotorControllers.FL_DRIVE_MOTOR, MotorControllers.FL_TURN_MOTOR, DriveConstants.FRONT_LEFT_CHASSIS_ANGULAR_OFFSET);
         public static final MAXSwerveModule FRONT_RIGHT_MODULE = new MAXSwerveModule(MotorControllers.FR_DRIVE_MOTOR, MotorControllers.FR_TURN_MOTOR, DriveConstants.FRONT_RIGHT_CHASSIS_ANGULAR_OFFSET);
         public static final MAXSwerveModule BACK_LEFT_MODULE = new MAXSwerveModule(MotorControllers.BL_DRIVE_MOTOR, MotorControllers.BL_TURN_MOTOR, DriveConstants.BACK_LEFT_CHASSIS_ANGULAR_OFFSET);
         public static final MAXSwerveModule BACK_RIGHT_MODULE = new MAXSwerveModule(MotorControllers.BR_DRIVE_MOTOR, MotorControllers.BR_TURN_MOTOR, DriveConstants.BACK_RIGHT_CHASSIS_ANGULAR_OFFSET);
-        public static final SwerveDrivePoseEstimator3d poseEstimator = new SwerveDrivePoseEstimator3d(DriveConstants.kDriveKinematics, Gyro.GYRO.getRotation3d(), new SwerveModulePosition[] {FRONT_LEFT_MODULE.getPosition(), FRONT_RIGHT_MODULE.getPosition(), BACK_LEFT_MODULE.getPosition(), BACK_RIGHT_MODULE.getPosition()}, new Pose3d());
+        public static final SwerveDrivePoseEstimator3d POSE_ESTIMATOR = new SwerveDrivePoseEstimator3d(DriveConstants.kDriveKinematics, Gyro.GYRO.getRotation3d(), new SwerveModulePosition[] {FRONT_LEFT_MODULE.getPosition(), FRONT_RIGHT_MODULE.getPosition(), BACK_LEFT_MODULE.getPosition(), BACK_RIGHT_MODULE.getPosition()}, new Pose3d());
 
         public static boolean IS_BLUE_ALLIANCE = false; //THESE ARE NOT FINAL ON PURPOSE, DO NOT MAKE THEM FINAL, CODE WILL BREAK
         public static boolean IS_RED_ALLIANCE = false;
 
     }
 
-    // TEMPORARY CLASS, I think there is a better alternative, like a dedicated enum file or something
-    public static final class CommandEnums {
+    // Implicitly static
+    public enum CommandEnums {
         // Blender
-        public static final int BlenderCmd = 0;
+        BLENDER_CMD,
 
         // Flywheel
-        public static final int FlywheelHighSpeedCmd = 1;
-        public static final int FlywheelLowSpeedCmd = 2;
+        FLYWHEEL_HIGH_SPEED_CMD,
+        FLYWHEEL_LOW_SPEED_CMD,
 
         // Intake
-        public static final int AutonomousIntakeDownCmd = 3;
-        public static final int AutonomousStartIntakeCmd = 4;
-        public static final int IntakeCmd = 5;
-        public static final int IntakeManagerCmd = 6;
-        public static final int IntakePivotCmd = 7;
-        public static final int IntakePivotDownCmd = 8;
-        public static final int IntakePivotLimitSwitchCmd = 9;
-        public static final int IntakePivotUpCmd = 10;
-        public static final int IntakePurgeCmd = 11;
-
-        // Other
-        public static final int LockOnCmd = 12;
-        public static final int ResetGyroCmd = 13;
+        AUTONOMOUS_INTAKE_DOWN_CMD,
+        AUTONOMOUS_START_INTAKE_CMD,
+        INTAKE_CMD,
+        INTAKE_MANAGER_CMD,
+        INTAKE_PIVOT_CMD,
+        INTAKE_PIVOT_DOWN_CMD,
+        INTAKE_PIVOT_LIMIT_SWITCH_CMD,
+        INTAKE_PIVOT_UP_CMD,
+        INTAKE_PURGE_CMD,
 
         // Shooter
-        public static final int ChangeRPMCmd = 14;
-        public static final int HighShooterRPMCmd = 15;
-        public static final int LowShooterRPMCmd = 16;
-        public static final int PresetShootCmd = 17;
-        public static final int ShootAtSpeedCmd = 18;
-        public static final int ShooterCmd = 19;
-        public static final int ShooterRPMControlCmd = 20;
-        public static final int TempShooterCmd = 21;
+        CHANGE_RPM_CMD,
+        HIGH_SHOOTER_RPM_CMD,
+        LOW_SHOOTER_RPM_CMD,
+        PRESET_SHOOT_CMD,
+        SHOOT_AT_SPEED_CMD,
+        SHOOTER_CMD,
+        SHOOTER_RPM_CONTROL_CMD,
+        TEMP_SHOOTER_CMD,
 
         // Swerve
-        public static final int TeleopDriveCmd = 22;
-        public static final int XFormationCmd = 23;
+        TELEOP_DRIVE_CMD,
+        XFORMATION_CMD,
+
+        // Other
+        LOCK_ON_CMD,
+        RESET_GYRO_CMD,
+
     }
 
     private Constants() {} // Overrides default constructor. Don't want anybody instantiating this class, even though likely no one would.

@@ -75,44 +75,44 @@ public class CommandFactory {
     private CommandFactory() {}
 
     // TODO: Make enum return respective initialized command
-    public static Command getCommand(int cmdEnum) {
+    public static Command getCommand(CommandEnums e) {
         // Blender
-        if (cmdEnum == CommandEnums.BlenderCmd) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.BLENDER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Flywheel
-        if (cmdEnum == CommandEnums.FlywheelHighSpeedCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.FlywheelLowSpeedCmd) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.FLYWHEEL_HIGH_SPEED_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.FLYWHEEL_LOW_SPEED_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Intake
-        if (cmdEnum == CommandEnums.AutonomousIntakeDownCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.AutonomousStartIntakeCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.IntakeCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.IntakeManagerCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.IntakePivotCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.IntakePivotDownCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.IntakePivotLimitSwitchCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.IntakePivotUpCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.IntakePurgeCmd) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.AUTONOMOUS_INTAKE_DOWN_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.AUTONOMOUS_START_INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.INTAKE_MANAGER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.INTAKE_PIVOT_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.INTAKE_PIVOT_DOWN_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.INTAKE_PIVOT_LIMIT_SWITCH_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.INTAKE_PIVOT_UP_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.INTAKE_PURGE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Other
-        if (cmdEnum == CommandEnums.LockOnCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.ResetGyroCmd) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.LOCK_ON_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.RESET_GYRO_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Shooter
-        if (cmdEnum == CommandEnums.ChangeRPMCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.HighShooterRPMCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.LowShooterRPMCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.PresetShootCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.ShootAtSpeedCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.ShooterCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.ShooterRPMControlCmd) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.TempShooterCmd) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.CHANGE_RPM_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.HIGH_SHOOTER_RPM_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.LOW_SHOOTER_RPM_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.PRESET_SHOOT_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.SHOOT_AT_SPEED_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.SHOOTER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.SHOOTER_RPM_CONTROL_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.TEMP_SHOOTER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Swerve
-        if (cmdEnum == CommandEnums.TeleopDriveCmd) return new TeleopDriveCmd(swerveSubsys); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.XFormationCmd) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (e == CommandEnums.TELEOP_DRIVE_CMD) return new TeleopDriveCmd(swerveSubsys); // TODO: Pass Args
+        if (e == CommandEnums.XFORMATION_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
 
-        // If invalid cmdEnum
+        // If invalid e
         throw new IllegalArgumentException("Unknown command, check Constants.java");
     }
 
