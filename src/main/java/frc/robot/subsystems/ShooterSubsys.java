@@ -100,31 +100,6 @@ public class ShooterSubsys extends SubsystemBase {
 
     @Override
     public void periodic() {
-        shooterRPMEntry.set(topMotor.getVelocity().getValueAsDouble() * 60);
-        shooterRPMTargetEntry.set(m_targetRPM * 60);
-        bottomRPMEntry.set(bottomMotor.getVelocity().getValueAsDouble() * 60);
-
-        double newKP = ntKP.get(m_kP);
-        double newKD = ntKD.get(m_kD);
-        double newKV = ntKV.get(m_kV);
-        double newKS = ntKS.get(m_kS);
-        double newKA = ntKA.get(m_kA);
-        if (newKP != m_kP || newKD != m_kD || newKV != m_kV || newKS != m_kS || newKA != m_kA) {
-            m_kP = newKP;
-            m_kD = newKD;
-            m_kV = newKV;
-            m_kS = newKS;
-            m_kA = newKA;
-            Slot0Configs updated = new Slot0Configs();
-            updated.kP = m_kP;
-            updated.kD = m_kD;
-            updated.kV = m_kV;
-            updated.kS = m_kS;
-            updated.kA = m_kA;
-            topMotor.getConfigurator().apply(updated);
-        }
-
-        blenderRPMDest = 1.125 * shooterRPMDest;
-        topMotor.setControl(topMotorSpeedRequest.withVelocity(m_targetRPM));
+        //TODO: fill this in and make it do things quite possibly :)
     }
 }

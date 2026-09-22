@@ -14,6 +14,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.subsystems.ShooterSubsys;
 import frc.robot.subsystems.SwerveSubsys;
 import frc.robot.subsystems.swerve.MAXSwerveModule;
 import frc.robot.subsystems.swerve.SwerveConstants.DriveConstants;
@@ -39,6 +40,11 @@ import frc.robot.subsystems.swerve.SwerveConstants.DriveConstants;
  * things like CAN ID's, Motor controllers, Chassis measurements, etc.
  */
 public final class Constants {
+    public static final class Subsystems {
+        public static final ShooterSubsys SHOOTER_SUBSYS = new ShooterSubsys();
+        public static final SwerveSubsys SWERVE_SUBSYS = new SwerveSubsys();
+    }
+
     public static final class Gyro {
         public static final Pigeon2 GYRO = new Pigeon2(CAN_IDs.GYRO_ID);
     }
