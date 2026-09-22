@@ -197,5 +197,44 @@ public final class Constants {
 
     }
 
+    // TEMPORARY CLASS, I think there is a better alternative, like a dedicated enum file or something
+    public static final class CommandEnums {
+        // Blender
+        public static final int BlenderCmd = 0;
+
+        // Flywheel
+        public static final int FlywheelHighSpeedCmd = 1;
+        public static final int FlywheelLowSpeedCmd = 2;
+
+        // Intake
+        public static final int AutonomousIntakeDownCmd = 3;
+        public static final int AutonomousStartIntakeCmd = 4;
+        public static final int IntakeCmd = 5;
+        public static final int IntakeManagerCmd = 6;
+        public static final int IntakePivotCmd = 7;
+        public static final int IntakePivotDownCmd = 8;
+        public static final int IntakePivotLimitSwitchCmd = 9;
+        public static final int IntakePivotUpCmd = 10;
+        public static final int IntakePurgeCmd = 11;
+
+        // Other
+        public static final int LockOnCmd = 12;
+        public static final int ResetGyroCmd = 13;
+
+        // Shooter
+        public static final int ChangeRPMCmd = 14;
+        public static final int HighShooterRPMCmd = 15;
+        public static final int LowShooterRPMCmd = 16;
+        public static final int PresetShootCmd = 17;
+        public static final int ShootAtSpeedCmd = 18;
+        public static final int ShooterCmd = 19;
+        public static final int ShooterRPMControlCmd = 20;
+        public static final int TempShooterCmd = 21;
+
+        // Swerve
+        public static final int TeleopDriveCmd = 22;
+        public static final int XFormationCmd = 23;
+    }
+
     private Constants() {} // Overrides default constructor. Don't want anybody instantiating this class, even though likely no one would.
 }
