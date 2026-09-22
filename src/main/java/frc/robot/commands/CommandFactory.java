@@ -59,13 +59,13 @@ public class CommandFactory {
         // Intake
         if (cmdEnum == CommandEnums.AUTONOMOUS_INTAKE_DOWN_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         if (cmdEnum == CommandEnums.AUTONOMOUS_START_INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.ACTIVATE_INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         if (cmdEnum == CommandEnums.INTAKE_MANAGER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         if (cmdEnum == CommandEnums.INTAKE_PIVOT_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.INTAKE_PIVOT_DOWN_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.INTAKE_PIVOT_LIMIT_SWITCH_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.PIVOT_INTAKE_DOWN_TIMED) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.PIVOT_INTAKE_DOWN_LS_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         if (cmdEnum == CommandEnums.INTAKE_PIVOT_UP_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.INTAKE_PURGE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.PURGE_INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Other
         if (cmdEnum == CommandEnums.LOCK_ON_CMD) return new TeleopDriveCmd(); // TODO: Pass Args

@@ -202,6 +202,7 @@ public final class Constants {
 
     }
 
+    // TODO: Ensure that the name of the enums and the name of the actual commands are identical
     // Implicitly static
     public enum CommandEnums {
         // Blender
@@ -214,13 +215,13 @@ public final class Constants {
         // Intake
         AUTONOMOUS_INTAKE_DOWN_CMD,
         AUTONOMOUS_START_INTAKE_CMD,
-        INTAKE_CMD,
+        ACTIVATE_INTAKE_CMD,
         INTAKE_MANAGER_CMD,
         INTAKE_PIVOT_CMD,
-        INTAKE_PIVOT_DOWN_CMD,
-        INTAKE_PIVOT_LIMIT_SWITCH_CMD,
+        PIVOT_INTAKE_DOWN_TIMED,
+        PIVOT_INTAKE_DOWN_LS_CMD,
         INTAKE_PIVOT_UP_CMD,
-        INTAKE_PURGE_CMD,
+        PURGE_INTAKE_CMD,
 
         // Shooter
         CHANGE_RPM_CMD,
