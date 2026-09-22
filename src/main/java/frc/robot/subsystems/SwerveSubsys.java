@@ -1,43 +1,28 @@
 package frc.robot.subsystems;
 
 import static edu.wpi.first.units.Units.Degree;
-import static edu.wpi.first.units.Units.Inch;
-import static edu.wpi.first.units.Units.Meter;
 import static edu.wpi.first.units.Units.MetersPerSecond;
 import com.ctre.phoenix6.hardware.Pigeon2;
 import edu.wpi.first.hal.FRCNetComm.tInstances;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
 import edu.wpi.first.hal.HAL;
-import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator3d;
-import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
-import edu.wpi.first.math.kinematics.Odometry;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
-import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.networktables.DoubleEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.units.measure.LinearVelocity;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants;
 import frc.robot.Constants.Controller;
-import frc.robot.Constants.DigitalValues;
 import frc.robot.Constants.Gyro;
-import frc.robot.Constants.MotorControllers;
-import frc.robot.Constants.SoftwareObjects;
 import frc.robot.subsystems.swerve.MAXSwerveModule;
 import frc.robot.subsystems.swerve.SwerveConstants.DriveConstants;
-import frc.robot.subsystems.swerve.SwerveConstants.ModuleConstants;
 
 public class SwerveSubsys extends SubsystemBase {
     // This is directly copied from MAXSwerve template
@@ -71,8 +56,6 @@ public class SwerveSubsys extends SubsystemBase {
 
     private static SwerveModuleState xFormation1 = new SwerveModuleState(MetersPerSecond.of(0.0), new Rotation2d(Degree.of(45)));
     private static SwerveModuleState xFormation2 = new SwerveModuleState(MetersPerSecond.of(0.0), new Rotation2d(Degree.of(135)));
-
-    private double desiredRot = 0.0;
 
     public SwerveSubsys() {
         super();
@@ -129,52 +112,6 @@ public class SwerveSubsys extends SubsystemBase {
         m_frontRight.setDesiredState(swerveModuleStates[1]);
         m_rearLeft.setDesiredState(swerveModuleStates[2]);
         m_rearRight.setDesiredState(swerveModuleStates[3]);
-    }
-
-    /**
-     * Run periodically during teleop
-     * 
-     * @return
-     */
-
-    // TODO: Make this a separate command class
-    public Command teleopDrive() {
-        return run(() -> {
-                // Done this way in order to easily enforce controller deadzones since this
-                // isn't already done in drive()
-
-                if (controller.getHID().getRightBumperButton()) {
-                    x = -0.3;
-                } else if (controller.getHID().getLeftBumperButton()) {
-                    x = 0.3;
-                } else {
-                    x = 0;
-                }
-                x = Math.abs(x) > Constants.DigitalValues.CONTROLLER_DEADZONE ? x : 0.0;
-
-                if (controller.getRightTriggerAxis() > 0) {
-                    y = controller.getRightTriggerAxis() * 0.3;
-                } else if (controller.getLeftTriggerAxis() > 0) {
-                    y = -controller.getLeftTriggerAxis() * 0.3;
-                } else {
-                    y = 0;
-                }
-                y = Math.abs(y) > Constants.DigitalValues.CONTROLLER_DEADZONE ? y : 0.0; // Both X and Y are reversed in order to make the shooter the front of the robot
-
-                if (Math.abs(x) >= 0.95 && Math.abs(y) <= 0.2) {
-                    x = 1 * Math.signum(x);
-                    y = 0;
-                } else if (Math.abs(y) >= 0.95 && Math.abs(x) <= 0.2) {
-                    x = 0;
-                    y = 1 * Math.signum(y);
-                }
-
-            // TODO: Set this back to true when robot is in better shape, false to be easier
-            // to work with for now.
-            // Realistically, it needs to be possible to make it not field relative, maybe a
-            // hold or something.
-            drive(x, y, rot, false);
-        });
     }
 
     public void setXFormation() {

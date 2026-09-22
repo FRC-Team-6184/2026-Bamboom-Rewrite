@@ -7,6 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.swerve.TeleopDriveCmd;
+import frc.robot.subsystems.ShooterSubsys;
+import frc.robot.subsystems.SwerveSubsys;
 
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
@@ -15,6 +18,9 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
+
+  private ShooterSubsys shooter = Constants.Subsystems.SHOOTER_SUBSYS;
+  private SwerveSubsys swerve = Constants.Subsystems.SWERVE_SUBSYS;
 
 
   /**
@@ -67,6 +73,9 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+
+    //TODO: Make this command a constant or something, idk this feels nasty
+    CommandScheduler.getInstance().schedule(new TeleopDriveCmd(swerve));
   }
 
   /** This function is called periodically during operator control. */
