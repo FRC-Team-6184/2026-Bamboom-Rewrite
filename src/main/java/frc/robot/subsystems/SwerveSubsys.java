@@ -124,7 +124,7 @@ public class SwerveSubsys extends SubsystemBase {
         double ySpeedDelivered = ySpeed * DriveConstants.MAX_SPEED_METERS_PER_SECOND;
         double rotDelivered = rot * DriveConstants.MAX_ANGULAR_SPEED;
 
-        SwerveModuleState[] swerveModuleStates = kinematics.toSwerveModuleStates(fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered, odometryGyro.getRotation3d().toRotation2d()) : new ChassisSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered));
+        SwerveModuleState[] swerveModuleStates = kinematics.toSwerveModuleStates(fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered, gyro.getRotation3d().toRotation2d()) : new ChassisSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered));
         SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, DriveConstants.MAX_SPEED_METERS_PER_SECOND);
         m_frontLeft.setDesiredState(swerveModuleStates[0]);
         m_frontRight.setDesiredState(swerveModuleStates[1]);
@@ -141,7 +141,6 @@ public class SwerveSubsys extends SubsystemBase {
     // TODO: Make this a separate command class
     public Command teleopDrive() {
         return run(() -> {
-            if (canMove) {
                 // Done this way in order to easily enforce controller deadzones since this
                 // isn't already done in drive()
 
@@ -170,10 +169,6 @@ public class SwerveSubsys extends SubsystemBase {
                     x = 0;
                     y = 1 * Math.signum(y);
                 }
-            } else {
-                x = 0;
-                y = 0;
-            }
 
             // TODO: Set this back to true when robot is in better shape, false to be easier
             // to work with for now.
