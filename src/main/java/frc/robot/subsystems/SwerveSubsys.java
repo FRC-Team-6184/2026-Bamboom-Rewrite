@@ -36,7 +36,6 @@ import frc.robot.Constants.Gyro;
 import frc.robot.Constants.MotorControllers;
 import frc.robot.Constants.SoftwareObjects;
 import frc.robot.subsystems.swerve.MAXSwerveModule;
-import frc.robot.subsystems.swerve.SwerveConstants;
 import frc.robot.subsystems.swerve.SwerveConstants.DriveConstants;
 import frc.robot.subsystems.swerve.SwerveConstants.ModuleConstants;
 
