@@ -24,7 +24,7 @@ import frc.robot.commands.swerve.TeleopDriveCmd;
 // import frc.robot.commands.intake.IntakePivotDownCommand;
 // import frc.robot.commands.intake.IntakePivotLimitSwitchCommand;
 // import frc.robot.commands.intake.IntakeManagerCommand;
-
+import frc.robot.subsystems.IntakeSubsys;
 // import frc.robot.subsystems.AutonomousSubsys;
 // import frc.robot.subsystems.IntakeSubsys;
 import frc.robot.subsystems.ShooterSubsys;
@@ -38,7 +38,9 @@ public class CommandFactory {
 
     // TODO: SubsystemFactory class for getting subsystems?
     // Subsystems
-    private static SwerveSubsys swerveSubsys = new SwerveSubsys();
+    private final static SwerveSubsys SWERVE_SUBSYS = new SwerveSubsys();
+    private final static ShooterSubsys SHOOTER_SUBSYS = new ShooterSubsys();
+    private final static IntakeSubsys INTAKE_SUBSYS = new IntakeSubsys();
 
     // TODO: Make enum return respective initialized command
 
@@ -80,12 +82,12 @@ public class CommandFactory {
         if (cmdEnum == CommandEnums.TEMP_SHOOTER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Swerve
-        if (cmdEnum == CommandEnums.TELEOP_DRIVE_CMD) return new TeleopDriveCmd(swerveSubsys); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.TELEOP_DRIVE_CMD) return new TeleopDriveCmd(SWERVE_SUBSYS); // TODO: Pass Args
         if (cmdEnum == CommandEnums.XFORMATION_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
 
         // If invalid cmdEnum
         throw new IllegalArgumentException("Unknown command, check Constants.java");
     }
 
-    private CommandFactory() {}
+    private CommandFactory() {} // Prevent instantiation. This is a factory class.
 }

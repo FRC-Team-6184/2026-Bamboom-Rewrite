@@ -9,12 +9,17 @@ public class ActivateIntakeCmd extends Command {
     public ActivateIntakeCmd(IntakeSubsys intake) {
         super();
         this.intake = intake;
-        addRequirements(intake); // Removed 'this' keyword.
+        this.addRequirements(intake); 
     }
 
     @Override
     public void initialize() {
         intake.startIntake();
+    }
+
+    @Override
+    public void execute() {
+
     }
 
     @Override

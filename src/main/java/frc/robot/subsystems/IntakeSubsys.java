@@ -20,6 +20,7 @@ public class IntakeSubsys extends SubsystemBase {
 
     Slot0Configs intakeMotorPIDConfigs;
     VelocityVoltage intakeMotorSpeedRequest = new VelocityVoltage(0.0);
+
     private double intakeSpeed = -4000 / 60.0; // TODO: Remove magic numbers
 
     // TODO: Move this to a dedicated network table file
@@ -79,9 +80,11 @@ public class IntakeSubsys extends SubsystemBase {
     public void setIntakeSpeed(double rps) {
         // kIntakeMotor.setControl(intakeMotorSpeedRequest.withVelocity(rps));
         intakeSpeed = rps;
-
     }
 
+    public void setPivotSpeed(double rps) {
+
+    }
     // public TalonFX getPivotMotor() {
     //     return kPivotMotor;
     // }
