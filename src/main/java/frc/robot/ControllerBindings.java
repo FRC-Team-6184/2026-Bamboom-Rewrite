@@ -35,6 +35,14 @@ public class ControllerBindings {
         DRIVE_CONTROLLER.b().whileTrue(
             CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD));
         
+        CO_DRIVE_CONTROLLER.R1().toggleOnTrue(
+            CommandFactory.getCommand(CommandEnums.ACTIVATE_INTAKE_CMD)
+        );
+
+        // TODO: What do these 4 and 0.8 numbers mean? ):
+        CO_DRIVE_CONTROLLER.axisGreaterThan(4, 0.8).whileTrue(
+            CommandFactory.getCommand(CommandEnums.PURGE_INTAKE_CMD)
+        );
         // CO_DRIVE_CONTROLLER.povUp().onTrue(cmdIncreaseRPM);
         // CO_DRIVE_CONTROLLER.povDown().onTrue(cmdDecreaseRPM);
 
@@ -44,8 +52,6 @@ public class ControllerBindings {
         // CO_DRIVE_CONTROLLER.axisGreaterThan(3, 0.8).whileTrue(cmdBlender);
 
         // CO_DRIVE_CONTROLLER.L1().whileTrue(cmdFlywheelHigh);
-        // CO_DRIVE_CONTROLLER.R1().toggleOnTrue(cmdIntake);
-        // CO_DRIVE_CONTROLLER.axisGreaterThan(4, 0.8).whileTrue(cmdIntakePurge);
 
 
         // CO_DRIVE_CONTROLLER.axisGreaterThan(5, 0.12).or(CO_DRIVE_CONTROLLER.axisLessThan(5, -0.12)).whileTrue(cmdIntakePivot); //TODO: make this go to a proportional intake pivot command

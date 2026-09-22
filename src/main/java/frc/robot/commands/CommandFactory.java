@@ -1,7 +1,10 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-
+import frc.robot.commands.intake.ActivateIntakeCmd;
+import frc.robot.commands.intake.PivotIntakeDownLSCmd;
+import frc.robot.commands.intake.PivotIntakeDownTimedCmd;
+import frc.robot.commands.intake.PurgeIntakeCmd;
 // import frc.robot.commands.blender.BlenderCommand;
 // import frc.robot.commands.flywheel.FlywheelHighSpeedCommand;
 // import frc.robot.commands.flywheel.FlywheelLowSpeedCommand;
@@ -59,13 +62,13 @@ public class CommandFactory {
         // Intake
         if (cmdEnum == CommandEnums.AUTONOMOUS_INTAKE_DOWN_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         if (cmdEnum == CommandEnums.AUTONOMOUS_START_INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.ACTIVATE_INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.ACTIVATE_INTAKE_CMD) return new ActivateIntakeCmd(INTAKE_SUBSYS); 
         if (cmdEnum == CommandEnums.INTAKE_MANAGER_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
         if (cmdEnum == CommandEnums.INTAKE_PIVOT_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.PIVOT_INTAKE_DOWN_TIMED) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.PIVOT_INTAKE_DOWN_LS_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.PIVOT_INTAKE_DOWN_TIMED) return new PivotIntakeDownTimedCmd(INTAKE_SUBSYS); 
+        if (cmdEnum == CommandEnums.PIVOT_INTAKE_DOWN_LS_CMD) return new PivotIntakeDownLSCmd(INTAKE_SUBSYS); 
         if (cmdEnum == CommandEnums.INTAKE_PIVOT_UP_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
-        if (cmdEnum == CommandEnums.PURGE_INTAKE_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.PURGE_INTAKE_CMD) return new PurgeIntakeCmd(INTAKE_SUBSYS); 
         
         // Other
         if (cmdEnum == CommandEnums.LOCK_ON_CMD) return new TeleopDriveCmd(); // TODO: Pass Args
