@@ -67,9 +67,9 @@ public final class Constants {
 
         // Intake
         public static final int INTAKE_PIVOT_MOTOR_ID = 10;
-        public static final int INTAKE_ACTIVE_LEFT_MOTOR_ID = -1; //There's now two active intakes, both being NEO Vortex's. 
-        public static final int INTAKE_ACTIVE_RIGHT_MOTOR_ID = -1; //There's now two active intakes, both being NEO Vortex's. 
-
+        public static final int INTAKE_ACTIVE_MOTORS_ID = -1; // Two motors should both have this ID
+        // public static final int INTAKE_ACTIVE_LEFT_MOTOR_ID = -1; 
+        // public static final int INTAKE_ACTIVE_RIGHT_MOTOR_ID = -1;
 
         // Blender
         public static final int BLENDER_MOTOR_ID = 9;
@@ -140,10 +140,10 @@ public final class Constants {
         public static final SparkMax BR_TURN_MOTOR = new SparkMax(CAN_IDs.BR_TURN_MOTOR_ID, MotorType.kBrushless);
 
 
-        //TODO: Make intake work :)
+            //TODO: Make intake work :)
         // Intake
-        // public static final TalonFX PIVOT_INTAKE_MOTOR = new TalonFX(CAN_IDs.PIVOT_INTAKE_MOTOR_ID); // Check to make sure this ID is right
-        // public static final TalonFX ACTIVE_INTAKE_MOTOR = new TalonFX(CAN_IDs.ACTIVE_INTAKE_MOTOR_ID);
+        public static final TalonFX PIVOT_INTAKE_MOTOR = new TalonFX(CAN_IDs.INTAKE_PIVOT_MOTOR_ID); // Check to make sure this ID is right
+        public static final TalonFX ACTIVE_INTAKE_MOTORS = new TalonFX(CAN_IDs.INTAKE_ACTIVE_MOTORS_ID); // Currently set to -1
 
         // Blender
         public static final TalonFX BLENDER_MOTOR = new TalonFX(CAN_IDs.BLENDER_MOTOR_ID); // Check to make sure this ID is right
