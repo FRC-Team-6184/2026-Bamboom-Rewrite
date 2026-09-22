@@ -27,18 +27,20 @@ import frc.robot.commands.swerve.TeleopDriveCmd;
 
 // import frc.robot.subsystems.AutonomousSubsys;
 // import frc.robot.subsystems.IntakeSubsys;
-// import frc.robot.subsystems.ShooterSubsys;
-// import frc.robot.subsystems.SwerveSubsys;
+import frc.robot.subsystems.ShooterSubsys;
+import frc.robot.subsystems.SwerveSubsys;
 // import frc.robot.subsystems.VisionSubsys;
 // import frc.robot.subsystems.LEDSubsys;
 
 import frc.robot.Constants.CommandEnums;
 
 /* TODO:
- * Instantiate commands linked to their respective subsystems
- * Then add a method to get these initialized commands for later
+ * Subsystem Factory class?
  */
 public class CommandFactory {
+
+    // Subsystems (Maybe make a SubsysFactory class?)
+    private static SwerveSubsys swerveSubsys = new SwerveSubsys();
 
     // FlywheelHighSpeedCmd cmdFlywheelHigh;
     // FlywheelLowSpeedCmd cmdFlywheelLow;
@@ -72,7 +74,7 @@ public class CommandFactory {
 
     private CommandFactory() {}
 
-    // TODO: Make enum return respective command
+    // TODO: Make enum return respective initialized command
     public static Command getCommand(int cmdEnum) {
         // Blender
         if (cmdEnum == CommandEnums.BlenderCmd) return new TeleopDriveCmd(); // TODO: Pass Args
@@ -107,7 +109,7 @@ public class CommandFactory {
         if (cmdEnum == CommandEnums.TempShooterCmd) return new TeleopDriveCmd(); // TODO: Pass Args
         
         // Swerve
-        if (cmdEnum == CommandEnums.TeleopDriveCmd) return new TeleopDriveCmd(); // TODO: Pass Args
+        if (cmdEnum == CommandEnums.TeleopDriveCmd) return new TeleopDriveCmd(swerveSubsys); // TODO: Pass Args
         if (cmdEnum == CommandEnums.XFormationCmd) return new TeleopDriveCmd(); // TODO: Pass Args
 
         // If invalid cmdEnum
