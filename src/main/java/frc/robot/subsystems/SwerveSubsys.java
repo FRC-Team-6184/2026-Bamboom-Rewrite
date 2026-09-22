@@ -41,7 +41,7 @@ public class SwerveSubsys extends SubsystemBase {
     private final MAXSwerveModule m_frontRight = Constants.SoftwareObjects.FRONT_RIGHT_MODULE;
     private final MAXSwerveModule m_rearLeft = Constants.SoftwareObjects.BACK_LEFT_MODULE;
     private final MAXSwerveModule m_rearRight = Constants.SoftwareObjects.BACK_RIGHT_MODULE;
-    private final NetworkTableInstance network = Constants.SoftwareObjects.networkTableInstance;
+    private final NetworkTableInstance network = Constants.SoftwareObjects.NETWORK_TABLE_INSTANCE;
 
     private DoubleEntry positionXEntry = network.getDoubleTopic("PositionX").getEntry(0);
     private DoubleEntry positionYEntry = network.getDoubleTopic("PositionY").getEntry(0);
@@ -51,7 +51,7 @@ public class SwerveSubsys extends SubsystemBase {
     // private GenericEntry field2dEntry = network.getTopic("Field2d").getGenericEntry();
 
     private Pigeon2 gyro = Gyro.GYRO;
-    private SwerveDrivePoseEstimator3d odometry = Constants.SoftwareObjects.poseEstimator;
+    private SwerveDrivePoseEstimator3d odometry = Constants.SoftwareObjects.POSE_ESTIMATOR;
     private SwerveDriveKinematics kinematics = DriveConstants.kDriveKinematics;
 
     private static SwerveModuleState xFormation1 = new SwerveModuleState(MetersPerSecond.of(0.0), new Rotation2d(Degree.of(45)));

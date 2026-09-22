@@ -22,9 +22,10 @@ public class IntakeSubsys extends SubsystemBase {
     VelocityVoltage intakeMotorSpeedRequest = new VelocityVoltage(0.0);
 
     private double intakeSpeed = -4000 / 60.0; // TODO: Remove magic numbers
+    private double pivotSpeed;
 
     // TODO: Move this to a dedicated network table file
-    DoubleEntry intakeSpeedEntry = SoftwareObjects.networkTableInstance.getDoubleTopic("/Intake/Intake Speed").getEntry(0.0);
+    DoubleEntry intakeSpeedEntry = SoftwareObjects.NETWORK_TABLE_INSTANCE.getDoubleTopic("/Intake/Intake Speed").getEntry(0.0);
 
     public IntakeSubsys() {
         super();
@@ -82,8 +83,14 @@ public class IntakeSubsys extends SubsystemBase {
         intakeSpeed = rps;
     }
 
+    /**
+     * 
+     * @param rps
+     * @see c Currently does not change anything, need to know what the {@code intakeSpeed} magic
+     * numbers are so I know what magical numbers to put as pivotSpeed.
+     */
     public void setPivotSpeed(double rps) {
-
+        pivotSpeed = rps;
     }
     // public TalonFX getPivotMotor() {
     //     return kPivotMotor;

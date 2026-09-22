@@ -28,7 +28,7 @@ public class ShooterSubsys extends SubsystemBase {
     private final TalonFX topMotor = MotorControllers.TOP_SHOOTER_WHEEL;
     private final TalonFX blenderMotor = MotorControllers.BLENDER_MOTOR; //NOTE: usually runs at -0.5
     private final CommandXboxController controller = Controller.XBOX;
-    private NetworkTable network = SoftwareObjects.networkTableInstance.getTable("Shooter");
+    private NetworkTable network = SoftwareObjects.NETWORK_TABLE_INSTANCE.getTable("Shooter");
     private DoubleEntry shooterRPMEntry = network.getDoubleTopic("ShooterRPM Actual").getEntry(0);
     private DoubleEntry shooterRPMTargetEntry = network.getDoubleTopic("ShooterRPM Target").getEntry(0);
     private DoubleEntry bottomRPMEntry = network.getDoubleTopic("BottomRPM Actual").getEntry(0);
