@@ -12,8 +12,14 @@ import frc.robot.Constants.DigitalValues;
 import frc.robot.Constants.MotorControllers;
 import frc.robot.Constants.SoftwareObjects;
 
-public class IntakeSubsys extends SubsystemBase {
 
+// Subsystems should only contain:
+// 1. All involved components
+// 2. All actions the subsystem might do
+// 3. Other dependencies for the above 2
+
+// TODO: Clean up generally
+public class IntakeSubsys extends SubsystemBase {
     private final DigitalInput kLimitSwitch;
     private final TalonFX kPivotMotor;
     private final TalonFX kIntakeMotors;
@@ -21,8 +27,8 @@ public class IntakeSubsys extends SubsystemBase {
     Slot0Configs intakeMotorPIDConfigs;
     VelocityVoltage intakeMotorSpeedRequest = new VelocityVoltage(0.0);
 
-    private double intakeSpeed = -4000 / 60.0; // TODO: Remove magic numbers
-    private double pivotSpeed;
+    private double intakeSpeed = -4000 / 60.0; // 4000 RPM / 60 Seconds to get RPS
+    private double pivotSpeed = DigitalValues.INTAKE_PIVOT; // Maybe make this into an RPS thing for consistency maybe? idk
 
     // TODO: Move this to a dedicated network table file
     DoubleEntry intakeSpeedEntry = SoftwareObjects.NETWORK_TABLE_INSTANCE.getDoubleTopic("/Intake/Intake Speed").getEntry(0.0);
@@ -51,11 +57,11 @@ public class IntakeSubsys extends SubsystemBase {
 
     // Pivoting Motor
     public void pivotUp() {
-        kPivotMotor.set(-0.75 * DigitalValues.INTAKE_PIVOT);
+        kPivotMotor.set(-0.75 * pivotSpeed);
     }
 
     public void pivotDown() {
-        kPivotMotor.set(DigitalValues.INTAKE_PIVOT);
+        kPivotMotor.set(pivotSpeed);
     }
 
     public void pivotStop() {
@@ -92,6 +98,7 @@ public class IntakeSubsys extends SubsystemBase {
     public void setPivotSpeed(double rps) {
         pivotSpeed = rps;
     }
+    
     // public TalonFX getPivotMotor() {
     //     return kPivotMotor;
     // }

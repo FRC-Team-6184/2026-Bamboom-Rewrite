@@ -242,7 +242,16 @@ public final class Constants {
         // Other
         LOCK_ON_CMD,
         RESET_GYRO_CMD,
+    }
 
+    public enum AutonomousEnums {
+        BlueDepotTrench, 
+        BlueHumanTrench, 
+        RedDepotTrench, 
+        RedHumanTrench, 
+        Practice, 
+        BlueDepotTrenchDouble, 
+        RedDepotTrenchDouble,
     }
 
     private Constants() {} // Overrides default constructor. Don't want anybody instantiating this class, even though likely no one would.
