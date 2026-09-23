@@ -46,44 +46,46 @@ public class CommandFactory {
      * @see {@code Constants.java} for a list of command enumerators
      */
     public static Command getCommand(CommandEnums cmdEnum) {
-        // Blender
-        if (cmdEnum == CommandEnums.BLENDER_CMD) return null;
-        
-        // Flywheel
-        if (cmdEnum == CommandEnums.FLYWHEEL_HIGH_SPEED_CMD) return null;
-        if (cmdEnum == CommandEnums.FLYWHEEL_LOW_SPEED_CMD) return null; 
-        
-        // Intake
-        if (cmdEnum == CommandEnums.AUTONOMOUS_INTAKE_DOWN_CMD) return null; 
-        if (cmdEnum == CommandEnums.AUTONOMOUS_START_INTAKE_CMD) return null; 
-        if (cmdEnum == CommandEnums.ACTIVATE_INTAKE_CMD) return new ActivateIntakeCmd(Subsystems.INTAKE_SUBSYS); 
-        if (cmdEnum == CommandEnums.INTAKE_MANAGER_CMD) return null; 
-        if (cmdEnum == CommandEnums.INTAKE_PIVOT_CMD) return null; 
-        if (cmdEnum == CommandEnums.PIVOT_INTAKE_DOWN_TIMED) return new PivotIntakeDownTimedCmd(Subsystems.INTAKE_SUBSYS); 
-        if (cmdEnum == CommandEnums.PIVOT_INTAKE_DOWN_LS_CMD) return new PivotIntakeDownLSCmd(Subsystems.INTAKE_SUBSYS); 
-        if (cmdEnum == CommandEnums.INTAKE_PIVOT_UP_CMD) return null; 
-        if (cmdEnum == CommandEnums.PURGE_INTAKE_CMD) return new PurgeIntakeCmd(Subsystems.INTAKE_SUBSYS); 
-        
-        // Other
-        if (cmdEnum == CommandEnums.LOCK_ON_CMD) return null; 
-        if (cmdEnum == CommandEnums.RESET_GYRO_CMD) return null; 
-        
-        // Shooter
-        if (cmdEnum == CommandEnums.CHANGE_RPM_CMD) return null; 
-        if (cmdEnum == CommandEnums.HIGH_SHOOTER_RPM_CMD) return null; 
-        if (cmdEnum == CommandEnums.LOW_SHOOTER_RPM_CMD) return null; 
-        if (cmdEnum == CommandEnums.PRESET_SHOOT_CMD) return null; 
-        if (cmdEnum == CommandEnums.SHOOT_AT_SPEED_CMD) return null; 
-        if (cmdEnum == CommandEnums.SHOOTER_CMD) return null; 
-        if (cmdEnum == CommandEnums.SHOOTER_RPM_CONTROL_CMD) return new ShooterRPMControlCmd(Subsystems.SHOOTER_SUBSYS, 100.0 / 60.0);
-        if (cmdEnum == CommandEnums.TEMP_SHOOTER_CMD) return null; 
-        
-        // Swerve
-        if (cmdEnum == CommandEnums.TELEOP_DRIVE_CMD) return new TeleopDriveCmd(Subsystems.SWERVE_SUBSYS); 
-        if (cmdEnum == CommandEnums.XFORMATION_CMD) return null; 
+        switch (cmdEnum) {
+                // Blender
+                case BLENDER_CMD: return null;
 
-        // If invalid cmdEnum
-        throw new IllegalArgumentException("Unknown command, check Constants.java");
+                // Flywheel
+                case FLYWHEEL_HIGH_SPEED_CMD: return null;
+                case FLYWHEEL_LOW_SPEED_CMD: return null;
+
+                // Intake
+                case AUTONOMOUS_INTAKE_DOWN_CMD: return null;
+                case AUTONOMOUS_START_INTAKE_CMD: return null;
+                case ACTIVATE_INTAKE_CMD: return new ActivateIntakeCmd(Subsystems.INTAKE_SUBSYS);
+                case INTAKE_MANAGER_CMD: return null;
+                case INTAKE_PIVOT_CMD: return null;
+                case PIVOT_INTAKE_DOWN_TIMED: return new PivotIntakeDownTimedCmd(Subsystems.INTAKE_SUBSYS);
+                case PIVOT_INTAKE_DOWN_LS_CMD: return new PivotIntakeDownLSCmd(Subsystems.INTAKE_SUBSYS);
+                case INTAKE_PIVOT_UP_CMD: return null;
+                case PURGE_INTAKE_CMD: return new PurgeIntakeCmd(Subsystems.INTAKE_SUBSYS);
+
+                // Other
+                case LOCK_ON_CMD: return null;
+                case RESET_GYRO_CMD: return null;
+
+                // Shooter
+                case CHANGE_RPM_CMD: return null;
+                case HIGH_SHOOTER_RPM_CMD: return null;
+                case LOW_SHOOTER_RPM_CMD: return null;
+                case PRESET_SHOOT_CMD: return null;
+                case SHOOT_AT_SPEED_CMD: return null;
+                case SHOOTER_CMD: return null;
+                case SHOOTER_RPM_CONTROL_CMD: return null;
+                case TEMP_SHOOTER_CMD: return null;
+
+                // Swerve
+                case TELEOP_DRIVE_CMD: return new TeleopDriveCmd(Subsystems.SWERVE_SUBSYS);
+                case XFORMATION_CMD: return null;
+
+                // If invalid cmdEnum
+                default: throw new IllegalArgumentException("Unknown command, check Constants.java");
+        }        
     }
 
     private CommandFactory() {} // Prevent instantiation. This is a factory class.
