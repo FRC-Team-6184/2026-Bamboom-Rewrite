@@ -9,8 +9,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SoftwareObjects;
 import frc.robot.Constants.AutonomousEnums;
 
-// TODO: Clean up this code and move things to other files
 public class AutonomousSubsys extends SubsystemBase {
+
+    private boolean isRedAlliance = true;
+    private boolean isBlueAlliance = false;
 
     private PathPlannerAuto blueDepotTrench = new PathPlannerAuto("Blue Depot Trench");
     private PathPlannerAuto blueHumanTrench = new PathPlannerAuto("Blue Human Station Trench");
@@ -21,9 +23,6 @@ public class AutonomousSubsys extends SubsystemBase {
     private PathPlannerAuto redDepotTrenchDouble = new PathPlannerAuto("Red Depot Trench Double");
 
     private SendableChooser<AutonomousEnums> autoChooser = new SendableChooser<AutonomousEnums>();
-
-    private boolean isRedAlliance = true;
-    private boolean isBlueAlliance = false;
 
     public AutonomousSubsys() {
         super();
@@ -117,12 +116,12 @@ public class AutonomousSubsys extends SubsystemBase {
 
     private void setAsBlueAlliance() {
         isBlueAlliance = true;
-        SoftwareObjects.IS_RED_ALLIANCE = false;
+        isRedAlliance = false;
     }
 
     private void setAsRedAlliance() {
-        SoftwareObjects.IS_BLUE_ALLIANCE = false;
-        SoftwareObjects.IS_RED_ALLIANCE = true;
+        isBlueAlliance = false;
+        isRedAlliance = true;
     }
 
 

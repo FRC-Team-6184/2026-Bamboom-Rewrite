@@ -15,6 +15,9 @@ import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.ShooterSubsys;
 import frc.robot.subsystems.SwerveSubsys;
+import frc.robot.subsystems.IntakeSubsys;
+import frc.robot.subsystems.AutonomousSubsys;
+import frc.robot.subsystems.VisionSubsys;
 import frc.robot.subsystems.swerve.MAXSwerveModule;
 import frc.robot.subsystems.swerve.SwerveConstants.DriveConstants;
 
@@ -41,22 +44,24 @@ import frc.robot.subsystems.swerve.SwerveConstants.DriveConstants;
 public final class Constants {
     public static final class Controller {
         public static final int XBOX_P = 0;
-        public static final int PS5_P = 1;
-
         public static final CommandXboxController XBOX = new CommandXboxController(XBOX_P);
+
+        public static final int PS5_P = 1;        
         public static final CommandPS5Controller PS5 = new CommandPS5Controller(PS5_P);
     }
 
     public static final class Subsystems {
+        public static final IntakeSubsys INTAKE_SUBSYS = new IntakeSubsys();
         public static final ShooterSubsys SHOOTER_SUBSYS = new ShooterSubsys();
         public static final SwerveSubsys SWERVE_SUBSYS = new SwerveSubsys();
+        public static final AutonomousSubsys AUTO_SUBSYS = new AutonomousSubsys();
+        public static final VisionSubsys VISION_SUBSYS = new VisionSubsys();
     }
 
     public static final class Gyro {
         public static final Pigeon2 GYRO = new Pigeon2(CAN_IDs.GYRO_ID);
     }
 
-    // TODO: reorder can ids and make them more logical than what is currently here
     // (hardware side)
     public static final class CAN_IDs {
         // Shooter
@@ -138,8 +143,6 @@ public final class Constants {
         public static final SparkMax FR_TURN_MOTOR = new SparkMax(CAN_IDs.FR_TURN_MOTOR_ID, MotorType.kBrushless);
         public static final SparkMax BR_TURN_MOTOR = new SparkMax(CAN_IDs.BR_TURN_MOTOR_ID, MotorType.kBrushless);
 
-
-            //TODO: Make intake work :)
         // Intake
         public static final TalonFX PIVOT_INTAKE_MOTOR = new TalonFX(CAN_IDs.INTAKE_PIVOT_MOTOR_ID); // Check to make sure this ID is right
         public static final TalonFX ACTIVE_INTAKE_MOTORS = new TalonFX(CAN_IDs.INTAKE_ACTIVE_MOTORS_ID); // Currently set to -1
@@ -174,22 +177,15 @@ public final class Constants {
         public static final double CONTROLLER_DEADZONE = 0.12;
 
         public static final class Chassis {
-        /**
-         * This assumes your robot is rectangular.
-         * TRACK_WIDTH is the distance between the left and right wheels,
-         * I'm using the distance between the left and right drive motors for this.
-         * WHEEL_BASE is the distance between the front and back wheels,
-         * I'm using the same reference point for this: centers of motors.
-         */
 
-        // Distance between centers of right and left wheels on robot
-        public static final double TRACK_WIDTH = Units.inchesToMeters(21.525); // This may be off, but we'll see. Measurement taken via CAD
+            // Distance between centers of right and left wheels on robot
+            public static final double TRACK_WIDTH = Units.inchesToMeters(21.525);
 
-        // Distance between front and back wheels on robot
-        public static final double WHEEL_BASE = Units.inchesToMeters(21.525);
+            // Distance between centers of front and back wheels on robot
+            public static final double WHEEL_BASE = Units.inchesToMeters(21.525);
 
-        // public static final RobotConfig ROBOT_CONFIGURATION = new RobotConfig(null, null, null, null);
-    }
+            // public static final RobotConfig ROBOT_CONFIGURATION = new RobotConfig(null, null, null, null);
+        }
     }
 
     public static final class SoftwareObjects {
@@ -201,13 +197,9 @@ public final class Constants {
         public static final MAXSwerveModule BACK_RIGHT_MODULE = new MAXSwerveModule(MotorControllers.BR_DRIVE_MOTOR, MotorControllers.BR_TURN_MOTOR, DriveConstants.BACK_RIGHT_CHASSIS_ANGULAR_OFFSET);
         public static final SwerveDrivePoseEstimator3d POSE_ESTIMATOR = new SwerveDrivePoseEstimator3d(DriveConstants.kDriveKinematics, Gyro.GYRO.getRotation3d(), new SwerveModulePosition[] {FRONT_LEFT_MODULE.getPosition(), FRONT_RIGHT_MODULE.getPosition(), BACK_LEFT_MODULE.getPosition(), BACK_RIGHT_MODULE.getPosition()}, new Pose3d());
 
-        public static boolean IS_BLUE_ALLIANCE = false; // THESE ARE NOT FINAL ON PURPOSE, DO NOT MAKE THEM FINAL, CODE WILL BREAK
-        public static boolean IS_RED_ALLIANCE = false;
-
     }
 
     // TODO: Ensure that the name of the enums and the name of the actual commands are identical
-    // Implicitly static
     public enum CommandEnums {
         // Blender
         BLENDER_CMD,
