@@ -14,7 +14,6 @@ import frc.robot.Constants.DigitalValues;
 import frc.robot.Constants.MotorControllers;
 import frc.robot.Constants.SoftwareObjects;
 
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
@@ -27,7 +26,7 @@ public class ShooterSubsys extends SubsystemBase {
     private final TalonFX bottomMotor = MotorControllers.BOTTOM_SHOOTER_WHEEL;
     private final TalonFX topMotor = MotorControllers.TOP_SHOOTER_WHEEL;
     private final TalonFX blenderMotor = MotorControllers.BLENDER_MOTOR; //NOTE: usually runs at -0.5
-    private final CommandXboxController controller = Controller.XBOX;
+    private final CommandXboxController CONTROLLER = Controller.XBOX;
     private NetworkTable network = SoftwareObjects.NETWORK_TABLE_INSTANCE.getTable("Shooter");
     private DoubleEntry shooterRPMEntry = network.getDoubleTopic("ShooterRPM Actual").getEntry(0);
     private DoubleEntry shooterRPMTargetEntry = network.getDoubleTopic("ShooterRPM Target").getEntry(0);
@@ -44,7 +43,7 @@ public class ShooterSubsys extends SubsystemBase {
 
     private double shooterRPMDest = DigitalValues.SHOOTER_HIGH_SPEED;
     private double m_targetRPM = 3250 / 60.0;
-    private double kickerRPMDest = -4500 / 60.0; //placeholder values
+    private double kickerRPMDest = -4500 / 60.0; // placeholder values
     private double blenderRPMDest = 1.25 * shooterRPMDest;
 
     /**
@@ -84,7 +83,7 @@ public class ShooterSubsys extends SubsystemBase {
         bottomShooterPIDConfig.kA = 0.0019461;
         bottomShooterPIDConfig.kV = 0.11021;
         bottomShooterPIDConfig.kS = 0.027235;
-        bottomShooterPIDConfig.kD = 0.0; //What SysID gave me
+        bottomShooterPIDConfig.kD = 0.0; // What SysID gave me
         bottomMotor.getConfigurator().apply(bottomShooterPIDConfig);
         bottomMotor.getConfigurator().apply(new MotorOutputConfigs().withInverted(InvertedValue.Clockwise_Positive));
 
@@ -93,7 +92,7 @@ public class ShooterSubsys extends SubsystemBase {
         blenderPIDConfig.kA = 0.0029793;
         blenderPIDConfig.kV = 0.11111;
         blenderPIDConfig.kS = 0.049802;
-        blenderPIDConfig.kD = 0.0; //Still what SysID gave me. This value probably defaults to 0.0, but I don't trust it.
+        blenderPIDConfig.kD = 0.0; // Still what SysID gave me. This value probably defaults to 0.0, but I don't trust it.
         blenderMotor.getConfigurator().apply(blenderPIDConfig);
 
     }

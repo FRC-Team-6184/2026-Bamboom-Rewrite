@@ -26,8 +26,8 @@ public class PivotIntakeDownLSCmd extends Command {
     @Override
     public void execute() {
         if (!intake.isSwitchHit()) {
-            intake.setPivotSpeed(0.1); // Currently does not actually do anything
-            intake.pivotDown(); // Currently set to 0.2 speed according to the constants
+            intake.setPivotSpeed(0.1); 
+            intake.pivotDown(); 
         } else {
             intake.pivotStop();
         }
