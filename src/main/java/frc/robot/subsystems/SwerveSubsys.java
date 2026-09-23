@@ -34,13 +34,12 @@ public class SwerveSubsys extends SubsystemBase {
     private double rot;
     private boolean canRotate = true;
     private boolean canMove = true;
-    private final CommandXboxController controller = Controller.XBOX;
 
     // Create MAXSwerveModules
-    private final MAXSwerveModule m_frontLeft = Constants.SoftwareObjects.FRONT_LEFT_MODULE;
-    private final MAXSwerveModule m_frontRight = Constants.SoftwareObjects.FRONT_RIGHT_MODULE;
-    private final MAXSwerveModule m_rearLeft = Constants.SoftwareObjects.BACK_LEFT_MODULE;
-    private final MAXSwerveModule m_rearRight = Constants.SoftwareObjects.BACK_RIGHT_MODULE;
+    private final MAXSwerveModule FL_MODULE = Constants.SoftwareObjects.FRONT_LEFT_MODULE;
+    private final MAXSwerveModule FR_MODULE = Constants.SoftwareObjects.FRONT_RIGHT_MODULE;
+    private final MAXSwerveModule BL_MODULE = Constants.SoftwareObjects.BACK_LEFT_MODULE;
+    private final MAXSwerveModule BR_MODULE = Constants.SoftwareObjects.BACK_RIGHT_MODULE;
     private final NetworkTableInstance network = Constants.SoftwareObjects.NETWORK_TABLE_INSTANCE;
 
     private DoubleEntry positionXEntry = network.getDoubleTopic("PositionX").getEntry(0);
@@ -50,7 +49,7 @@ public class SwerveSubsys extends SubsystemBase {
     private Field2d field = new Field2d();
     // private GenericEntry field2dEntry = network.getTopic("Field2d").getGenericEntry();
 
-    private Pigeon2 gyro = Gyro.GYRO;
+    private final Pigeon2 GYRO = Gyro.GYRO;
     private SwerveDrivePoseEstimator3d odometry = Constants.SoftwareObjects.POSE_ESTIMATOR;
     private SwerveDriveKinematics kinematics = DriveConstants.kDriveKinematics;
 
@@ -66,9 +65,9 @@ public class SwerveSubsys extends SubsystemBase {
         positionYEntry.set(0.0);
         positionZEntry.set(0.0);
 
-        gyro.reset();
+        GYRO.reset();
 
-        field.setRobotPose(odometry.getEstimatedPosition().getMeasureX(), odometry.getEstimatedPosition().getMeasureY(), gyro.getRotation2d());
+        field.setRobotPose(odometry.getEstimatedPosition().getMeasureX(), odometry.getEstimatedPosition().getMeasureY(), GYRO.getRotation2d());
         SmartDashboard.putData(field);
         SmartDashboard.updateValues();
 
@@ -88,7 +87,7 @@ public class SwerveSubsys extends SubsystemBase {
         SmartDashboard.putData(field);
         SmartDashboard.updateValues();
 
-        // System.out.println(m_frontLeft.getState().angle);
+        // System.out.println(FL_MODULE.getState().angle);
     }
 
     /**
@@ -106,18 +105,18 @@ public class SwerveSubsys extends SubsystemBase {
         double ySpeedDelivered = ySpeed * DriveConstants.MAX_SPEED_METERS_PER_SECOND;
         double rotDelivered = rot * DriveConstants.MAX_ANGULAR_SPEED;
 
-        SwerveModuleState[] swerveModuleStates = kinematics.toSwerveModuleStates(fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered, gyro.getRotation3d().toRotation2d()) : new ChassisSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered));
+        SwerveModuleState[] swerveModuleStates = kinematics.toSwerveModuleStates(fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered, GYRO.getRotation3d().toRotation2d()) : new ChassisSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered));
         SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, DriveConstants.MAX_SPEED_METERS_PER_SECOND);
-        m_frontLeft.setDesiredState(swerveModuleStates[0]);
-        m_frontRight.setDesiredState(swerveModuleStates[1]);
-        m_rearLeft.setDesiredState(swerveModuleStates[2]);
-        m_rearRight.setDesiredState(swerveModuleStates[3]);
+        FL_MODULE.setDesiredState(swerveModuleStates[0]);
+        FR_MODULE.setDesiredState(swerveModuleStates[1]);
+        BL_MODULE.setDesiredState(swerveModuleStates[2]);
+        BR_MODULE.setDesiredState(swerveModuleStates[3]);
     }
 
     public void setXFormation() {
-        m_frontLeft.setDesiredState(xFormation1);
-        m_frontRight.setDesiredState(xFormation2);
-        m_rearLeft.setDesiredState(xFormation2);
-        m_rearRight.setDesiredState(xFormation1);
+        FL_MODULE.setDesiredState(xFormation1);
+        FR_MODULE.setDesiredState(xFormation2);
+        BL_MODULE.setDesiredState(xFormation2);
+        BR_MODULE.setDesiredState(xFormation1);
     }
 }
