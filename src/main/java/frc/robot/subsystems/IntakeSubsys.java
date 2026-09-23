@@ -21,15 +21,15 @@ import frc.robot.Constants.SoftwareObjects;
 // TODO: Clean up generally
 public class IntakeSubsys extends SubsystemBase {
     private final DigitalInput kLimitSwitch;
-    private final TalonFX kPivotMotor;
+    private final TalonFX INTAKE_PIVOT_MOTOR;
     private final TalonFX FL_INTAKE_MOTOR;
     private final TalonFX FR_INTAKE_MOTOR;
 
-    Slot0Configs intakeMotorPIDConfigs; // Stuff regarding Feed-Forward
+    private final Slot0Configs INTAKE_MOTOR_PID_CONFIGS;
     VelocityVoltage intakeMotorSpeedRequest = new VelocityVoltage(0.0);
 
     private double intakeSpeed = -4000 / 60.0; // 4000 RPM / 60 Seconds to get RPS
-    private double pivotSpeed = Speeds.INTAKE_PIVOT; // Make this into an RPS thing for consistency
+    private double pivotSpeed = Speeds.INTAKE_PIVOT; 
 
     // TODO: Move this to a dedicated network table file
     DoubleEntry intakeSpeedEntry = SoftwareObjects.NETWORK_TABLE_INSTANCE.getDoubleTopic("/Intake/Intake Speed").getEntry(0.0);
@@ -38,20 +38,21 @@ public class IntakeSubsys extends SubsystemBase {
         super();
 
         kLimitSwitch = DigitalInputOutput.INTAKE_LIMIT_SWITCH;
-        kPivotMotor = MotorControllers.PIVOT_INTAKE_MOTOR;
+        INTAKE_PIVOT_MOTOR = MotorControllers.INTAKE_PIVOT_MOTOR;
         FL_INTAKE_MOTOR = MotorControllers.FL_ACTIVE_INTAKE_MOTOR;
         FR_INTAKE_MOTOR = MotorControllers.FR_ACTIVE_INTAKE_MOTOR;
         
+        INTAKE_MOTOR_PID_CONFIGS = new Slot0Configs();
 
-        // DO NOT TOUCH
-        Slot0Configs intakeMotorPIDConfigs = new Slot0Configs();
-        intakeMotorPIDConfigs.kS = 0.0065; // Assuming this value is close enough, hard to measure
-        intakeMotorPIDConfigs.kA = 0.022339;
-        intakeMotorPIDConfigs.kP = 0.14536;
-        intakeMotorPIDConfigs.kV = 0.13043;
-        intakeMotorPIDConfigs.kD = 0.0; // Just in case the default is not 0
-        FL_INTAKE_MOTOR.getConfigurator().apply(intakeMotorPIDConfigs);
-        FR_INTAKE_MOTOR.getConfigurator().apply(intakeMotorPIDConfigs);
+        // PID Config Values
+        INTAKE_MOTOR_PID_CONFIGS.kS = 0.0065; // Assuming this value is close enough, hard to measure
+        INTAKE_MOTOR_PID_CONFIGS.kA = 0.022339;
+        INTAKE_MOTOR_PID_CONFIGS.kP = 0.14536;
+        INTAKE_MOTOR_PID_CONFIGS.kV = 0.13043;
+        INTAKE_MOTOR_PID_CONFIGS.kD = 0.0; // Just in case the default is not 0
+
+        FL_INTAKE_MOTOR.getConfigurator().apply(INTAKE_MOTOR_PID_CONFIGS);
+        FR_INTAKE_MOTOR.getConfigurator().apply(INTAKE_MOTOR_PID_CONFIGS);
     }
 
     @Override
@@ -62,18 +63,15 @@ public class IntakeSubsys extends SubsystemBase {
 
     // Pivoting Motor
     public void pivotUp() {
-        FL_INTAKE_MOTOR.set(-0.75 * pivotSpeed);
-        FR_INTAKE_MOTOR.set(-0.75 * pivotSpeed);
+        INTAKE_PIVOT_MOTOR.set(-0.75 * pivotSpeed);
     }
 
     public void pivotDown() {
-        FL_INTAKE_MOTOR.set(pivotSpeed);
-        FR_INTAKE_MOTOR.set(pivotSpeed);
+        INTAKE_PIVOT_MOTOR.set(pivotSpeed);
     }
 
     public void pivotStop() {
-        FL_INTAKE_MOTOR.set(0);
-        FR_INTAKE_MOTOR.set(0);
+        INTAKE_PIVOT_MOTOR.set(0);
     }
 
     // Intake Motors
@@ -93,6 +91,15 @@ public class IntakeSubsys extends SubsystemBase {
     }
 
     /**
+     * 
+     * @return Returns true when the limit switch is active
+     */
+    public boolean isSwitchHit() {
+        return !kLimitSwitch.get(); //True when not hit, false when hit, so not to make it function more as expected
+    }
+
+    /**
+     * 
      * @param rps Speed for intake motor to do in Rotations Per Second (<b><i> NOT ROTATIONS PER MINUTE </i></b>)
      */
     public void setIntakeSpeed(double rps) {
@@ -102,31 +109,18 @@ public class IntakeSubsys extends SubsystemBase {
 
     /**
      * 
-     * @param rps
-     * @see c Currently does not change anything, need to know what the {@code intakeSpeed} magic
-     * numbers are so I know what magical numbers to put as pivotSpeed.
+     * @param speed as a value from 0 to 1
      */
-    public void setPivotSpeed(double rps) {
-        pivotSpeed = rps;
+    public void setPivotSpeed(double speed) {
+        pivotSpeed = speed;
     }
     
-    // public TalonFX getPivotMotor() {
-    //     return kPivotMotor;
-    // }
-
     /**
      * 
      * @return An array of the velocities of both the FR (index 0) and FL (index 1) Motors
      */
     public double[] getVelocity() {
         return new double[]{FL_INTAKE_MOTOR.getVelocity().getValueAsDouble(), FL_INTAKE_MOTOR.getVelocity().getValueAsDouble()};
-    }
-
-    /**
-     * @return Returns true when the limit switch is active
-     */
-    public boolean isSwitchHit() {
-        return !kLimitSwitch.get(); //True when not hit, false when hit, so not to make it function more as expected
     }
 
 

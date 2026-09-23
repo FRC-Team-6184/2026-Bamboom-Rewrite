@@ -143,7 +143,7 @@ public final class Constants {
         public static final SparkMax BR_TURN_MOTOR = new SparkMax(CAN_IDs.BR_TURN_MOTOR_ID, MotorType.kBrushless);
 
         // Intake
-        public static final TalonFX PIVOT_INTAKE_MOTOR = new TalonFX(CAN_IDs.INTAKE_PIVOT_MOTOR_ID); // Check to make sure this ID is right
+        public static final TalonFX INTAKE_PIVOT_MOTOR = new TalonFX(CAN_IDs.INTAKE_PIVOT_MOTOR_ID); // Check to make sure this ID is right
         public static final TalonFX FR_ACTIVE_INTAKE_MOTOR = new TalonFX(CAN_IDs.FR_ACTIVE_INTAKE_ID);
         public static final TalonFX FL_ACTIVE_INTAKE_MOTOR = new TalonFX(CAN_IDs.FL_ACTIVE_INTAKE_ID);
 

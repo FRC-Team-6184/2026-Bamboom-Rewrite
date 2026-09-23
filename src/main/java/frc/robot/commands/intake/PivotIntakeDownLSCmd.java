@@ -3,7 +3,7 @@ package frc.robot.commands.intake;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.IntakeSubsys;
 
-import frc.robot.Constants.DigitalValues;
+import frc.robot.Constants.DigitalValues.Speeds;
 
 // Implementation of the intake pivotation, using a limit switch.
 /**
@@ -35,7 +35,7 @@ public class PivotIntakeDownLSCmd extends Command {
 
     @Override
     public void end(boolean interrupted) {
-        intake.setPivotSpeed(DigitalValues.INTAKE_PIVOT); // Set back to default
+        intake.setPivotSpeed(Speeds.INTAKE_PIVOT); // Set back to default
         intake.pivotStop();
     }
 }
