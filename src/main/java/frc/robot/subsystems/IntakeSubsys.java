@@ -8,7 +8,7 @@ import edu.wpi.first.networktables.DoubleEntry;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DigitalInputOutput;
-import frc.robot.Constants.DigitalValues;
+import frc.robot.Constants.DigitalValues.Speeds;
 import frc.robot.Constants.MotorControllers;
 import frc.robot.Constants.SoftwareObjects;
 
@@ -22,13 +22,14 @@ import frc.robot.Constants.SoftwareObjects;
 public class IntakeSubsys extends SubsystemBase {
     private final DigitalInput kLimitSwitch;
     private final TalonFX kPivotMotor;
-    private final TalonFX kIntakeMotors;
+    private final TalonFX FL_INTAKE_MOTOR;
+    private final TalonFX FR_INTAKE_MOTOR;
 
-    Slot0Configs intakeMotorPIDConfigs;
+    Slot0Configs intakeMotorPIDConfigs; // Stuff regarding Feed-Forward
     VelocityVoltage intakeMotorSpeedRequest = new VelocityVoltage(0.0);
 
     private double intakeSpeed = -4000 / 60.0; // 4000 RPM / 60 Seconds to get RPS
-    private double pivotSpeed = DigitalValues.INTAKE_PIVOT; // Maybe make this into an RPS thing for consistency maybe? idk
+    private double pivotSpeed = Speeds.INTAKE_PIVOT; // Make this into an RPS thing for consistency
 
     // TODO: Move this to a dedicated network table file
     DoubleEntry intakeSpeedEntry = SoftwareObjects.NETWORK_TABLE_INSTANCE.getDoubleTopic("/Intake/Intake Speed").getEntry(0.0);
@@ -38,7 +39,9 @@ public class IntakeSubsys extends SubsystemBase {
 
         kLimitSwitch = DigitalInputOutput.INTAKE_LIMIT_SWITCH;
         kPivotMotor = MotorControllers.PIVOT_INTAKE_MOTOR;
-        kIntakeMotors = MotorControllers.ACTIVE_INTAKE_MOTORS;
+        FL_INTAKE_MOTOR = MotorControllers.FL_ACTIVE_INTAKE_MOTOR;
+        FR_INTAKE_MOTOR = MotorControllers.FR_ACTIVE_INTAKE_MOTOR;
+        
 
         // DO NOT TOUCH
         Slot0Configs intakeMotorPIDConfigs = new Slot0Configs();
@@ -47,38 +50,46 @@ public class IntakeSubsys extends SubsystemBase {
         intakeMotorPIDConfigs.kP = 0.14536;
         intakeMotorPIDConfigs.kV = 0.13043;
         intakeMotorPIDConfigs.kD = 0.0; // Just in case the default is not 0
-        kIntakeMotors.getConfigurator().apply(intakeMotorPIDConfigs);
+        FL_INTAKE_MOTOR.getConfigurator().apply(intakeMotorPIDConfigs);
+        FR_INTAKE_MOTOR.getConfigurator().apply(intakeMotorPIDConfigs);
     }
 
     @Override
     public void periodic() {
-        intakeSpeedEntry.set(kIntakeMotors.getVelocity().getValueAsDouble() * 60);
+        intakeSpeedEntry.set(FL_INTAKE_MOTOR.getVelocity().getValueAsDouble() * 60);
+        intakeSpeedEntry.set(FR_INTAKE_MOTOR.getVelocity().getValueAsDouble() * 60);
     }
 
     // Pivoting Motor
     public void pivotUp() {
-        kPivotMotor.set(-0.75 * pivotSpeed);
+        FL_INTAKE_MOTOR.set(-0.75 * pivotSpeed);
+        FR_INTAKE_MOTOR.set(-0.75 * pivotSpeed);
     }
 
     public void pivotDown() {
-        kPivotMotor.set(pivotSpeed);
+        FL_INTAKE_MOTOR.set(pivotSpeed);
+        FR_INTAKE_MOTOR.set(pivotSpeed);
     }
 
     public void pivotStop() {
-        kPivotMotor.set(0);
+        FL_INTAKE_MOTOR.set(0);
+        FR_INTAKE_MOTOR.set(0);
     }
 
     // Intake Motors
     public void startIntake() {
-        kIntakeMotors.setControl(intakeMotorSpeedRequest.withVelocity(intakeSpeed));
+        FL_INTAKE_MOTOR.setControl(intakeMotorSpeedRequest.withVelocity(intakeSpeed));
+        FR_INTAKE_MOTOR.setControl(intakeMotorSpeedRequest.withVelocity(intakeSpeed));
     }
 
     public void stopIntake() {
-        kIntakeMotors.set(0.0);
+        FL_INTAKE_MOTOR.set(0.0);
+        FR_INTAKE_MOTOR.set(0.0);
     }
 
     public void purgeIntake() {
-        kIntakeMotors.set(0.45);
+        FL_INTAKE_MOTOR.set(0.45);
+        FR_INTAKE_MOTOR.set(0.45);
     }
 
     /**
@@ -103,12 +114,12 @@ public class IntakeSubsys extends SubsystemBase {
     //     return kPivotMotor;
     // }
 
-    public double getVelocity() {
-        return kIntakeMotors.getVelocity().getValueAsDouble();
-    }
-
-    public void outtake() {
-        kIntakeMotors.set(0.75);
+    /**
+     * 
+     * @return An array of the velocities of both the FR (index 0) and FL (index 1) Motors
+     */
+    public double[] getVelocity() {
+        return new double[]{FL_INTAKE_MOTOR.getVelocity().getValueAsDouble(), FL_INTAKE_MOTOR.getVelocity().getValueAsDouble()};
     }
 
     /**

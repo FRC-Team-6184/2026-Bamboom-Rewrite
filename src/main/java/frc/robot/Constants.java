@@ -71,9 +71,8 @@ public final class Constants {
 
         // Intake
         public static final int INTAKE_PIVOT_MOTOR_ID = 10;
-        public static final int INTAKE_ACTIVE_MOTORS_ID = -1; // Two motors should both have this ID
-        // public static final int INTAKE_ACTIVE_LEFT_MOTOR_ID = -1; 
-        // public static final int INTAKE_ACTIVE_RIGHT_MOTOR_ID = -1;
+        public static final int FR_ACTIVE_INTAKE_ID = 15;
+        public static final int FL_ACTIVE_INTAKE_ID = 14; 
 
         // Blender
         public static final int BLENDER_MOTOR_ID = 9;
@@ -145,13 +144,12 @@ public final class Constants {
 
         // Intake
         public static final TalonFX PIVOT_INTAKE_MOTOR = new TalonFX(CAN_IDs.INTAKE_PIVOT_MOTOR_ID); // Check to make sure this ID is right
-        public static final TalonFX ACTIVE_INTAKE_MOTORS = new TalonFX(CAN_IDs.INTAKE_ACTIVE_MOTORS_ID); // Currently set to -1
+        public static final TalonFX FR_ACTIVE_INTAKE_MOTOR = new TalonFX(CAN_IDs.FR_ACTIVE_INTAKE_ID);
+        public static final TalonFX FL_ACTIVE_INTAKE_MOTOR = new TalonFX(CAN_IDs.FL_ACTIVE_INTAKE_ID);
 
         // Blender
         public static final TalonFX BLENDER_MOTOR = new TalonFX(CAN_IDs.BLENDER_MOTOR_ID); // Check to make sure this ID is right
     }
-
-    
 
     // Software things below
     public static final class DigitalInputOutput {
