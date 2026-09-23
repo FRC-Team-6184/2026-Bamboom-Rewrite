@@ -121,7 +121,9 @@ public final class Constants {
     public static final class MotorControllers {
         // Shooter Motors
         public static final TalonFX BOTTOM_SHOOTER_WHEEL = new TalonFX(CAN_IDs.SHOOTER_KICKER_WHEEL_ID);
-        public static final TalonFX TOP_SHOOTER_WHEEL = new TalonFX(CAN_IDs.SHOOTER_LEFT_WHEEL_ID);
+        public static final TalonFX SHOOTER_LEFT_WHEEL = new TalonFX(CAN_IDs.SHOOTER_LEFT_WHEEL_ID);
+        public static final TalonFX SHOOTER_RIGHT_WHEEL = new TalonFX(CAN_IDs.SHOOTER_RIGHT_WHEEL_ID);
+
 
         // Swerve
         // Left-side Drive Motors
