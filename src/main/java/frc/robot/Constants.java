@@ -39,6 +39,14 @@ import frc.robot.subsystems.swerve.SwerveConstants.DriveConstants;
  * things like CAN ID's, Motor controllers, Chassis measurements, etc.
  */
 public final class Constants {
+    public static final class Controller {
+        public static final int XBOX_P = 0;
+        public static final int PS5_P = 1;
+
+        public static final CommandXboxController XBOX = new CommandXboxController(XBOX_P);
+        public static final CommandPS5Controller PS5 = new CommandPS5Controller(PS5_P);
+    }
+
     public static final class Subsystems {
         public static final ShooterSubsys SHOOTER_SUBSYS = new ShooterSubsys();
         public static final SwerveSubsys SWERVE_SUBSYS = new SwerveSubsys();
@@ -46,14 +54,6 @@ public final class Constants {
 
     public static final class Gyro {
         public static final Pigeon2 GYRO = new Pigeon2(CAN_IDs.GYRO_ID);
-    }
-
-    public static final class Controller {
-        public static final int XBOX_P = 0;
-        public static final int PS5_P = 1;
-
-        public static final CommandXboxController XBOX = new CommandXboxController(XBOX_P);
-        public static final CommandPS5Controller PS5 = new CommandPS5Controller(PS5_P);
     }
 
     // TODO: reorder can ids and make them more logical than what is currently here
@@ -111,10 +111,10 @@ public final class Constants {
         public static final Slot0Configs BLENDER_SHOOTER_CONFIG = new Slot0Configs().withKS(BLENDER_SHOOTER_KS).withKV(BLENDER_SHOOTER_KV).withKA(BLENDER_SHOOTER_KA).withKP(BLENDER_SHOOTER_KP);
 
         //TODO: Find the feedforward constants because we haven't found them yet
-        public static final double ACTIVE_INTAKE_KS = 0;
-        public static final double ACTIVE_INTAKE_KV = 0;
-        public static final double ACTIVE_INTAKE_KA = 0;
-        public static final double ACTIVE_INTAKE_KP = 0;
+        public static final double ACTIVE_INTAKE_KS = 0; 
+        public static final double ACTIVE_INTAKE_KV = 0; 
+        public static final double ACTIVE_INTAKE_KA = 0; 
+        public static final double ACTIVE_INTAKE_KP = 0; 
         public static final Slot0Configs ACTIVE_INTAKE_CONFIG = new Slot0Configs().withKS(ACTIVE_INTAKE_KS).withKV(ACTIVE_INTAKE_KV).withKA(ACTIVE_INTAKE_KA).withKP(ACTIVE_INTAKE_KP);
     }
 
@@ -148,7 +148,32 @@ public final class Constants {
         public static final TalonFX BLENDER_MOTOR = new TalonFX(CAN_IDs.BLENDER_MOTOR_ID); // Check to make sure this ID is right
     }
 
-    public static final class Chassis {
+    
+
+    // Software things below
+    public static final class DigitalInputOutput {
+        public static final DigitalInput INTAKE_LIMIT_SWITCH = new DigitalInput(6); //This does exist! Hooray!
+        // public static final DigitalInput INTAKE_BOTTOM_LIMIT_SWITCH = new DigitalInput(1); THIS DOES NOT EXIST
+    }
+
+    public static final class DigitalValues {
+        public static final class Speeds {
+            public static final double SUPER_LOW = 0.05;
+            public static final double LOW = 0.33;
+            public static final double MEDIUM = 0.66;
+            public static final double HIGH = 1;
+
+            public static final double INTAKE_PIVOT = 0.2;
+            public static final double INTAKE_SPEED = -0.3;
+
+            public static final double SHOOTER_LOW_SPEED = 1500.0 / 60.0;
+            public static final double SHOOTER_HIGH_SPEED = 2500.0 / 60.0;
+            public static final double SHOOTER_BOTTOM_SPEED = -50;
+        }
+        
+        public static final double CONTROLLER_DEADZONE = 0.12;
+
+        public static final class Chassis {
         /**
          * This assumes your robot is rectangular.
          * TRACK_WIDTH is the distance between the left and right wheels,
@@ -165,27 +190,6 @@ public final class Constants {
 
         // public static final RobotConfig ROBOT_CONFIGURATION = new RobotConfig(null, null, null, null);
     }
-
-    // Software things below
-    public static final class DigitalInputOutput {
-        public static final DigitalInput INTAKE_LIMIT_SWITCH = new DigitalInput(6); //This does exist! Hooray!
-        // public static final DigitalInput INTAKE_BOTTOM_LIMIT_SWITCH = new DigitalInput(1); THIS DOES NOT EXIST
-    }
-
-    public static final class DigitalValues {
-        public static final double SUPER_LOW = 0.05;
-        public static final double LOW = 0.33;
-        public static final double MEDIUM = 0.66;
-        public static final double HIGH = 1;
-
-        public static final double INTAKE_PIVOT = 0.2;
-        public static final double INTAKE_SPEED = -0.3;
-
-        public static final double CONTROLLER_DEADZONE = 0.12;
-
-        public static final double SHOOTER_LOW_SPEED = 1500.0 / 60.0;
-        public static final double SHOOTER_HIGH_SPEED = 2500.0 / 60.0;
-        public static final double SHOOTER_BOTTOM_SPEED = -50;
     }
 
     public static final class SoftwareObjects {
@@ -197,7 +201,7 @@ public final class Constants {
         public static final MAXSwerveModule BACK_RIGHT_MODULE = new MAXSwerveModule(MotorControllers.BR_DRIVE_MOTOR, MotorControllers.BR_TURN_MOTOR, DriveConstants.BACK_RIGHT_CHASSIS_ANGULAR_OFFSET);
         public static final SwerveDrivePoseEstimator3d POSE_ESTIMATOR = new SwerveDrivePoseEstimator3d(DriveConstants.kDriveKinematics, Gyro.GYRO.getRotation3d(), new SwerveModulePosition[] {FRONT_LEFT_MODULE.getPosition(), FRONT_RIGHT_MODULE.getPosition(), BACK_LEFT_MODULE.getPosition(), BACK_RIGHT_MODULE.getPosition()}, new Pose3d());
 
-        public static boolean IS_BLUE_ALLIANCE = false; //THESE ARE NOT FINAL ON PURPOSE, DO NOT MAKE THEM FINAL, CODE WILL BREAK
+        public static boolean IS_BLUE_ALLIANCE = false; // THESE ARE NOT FINAL ON PURPOSE, DO NOT MAKE THEM FINAL, CODE WILL BREAK
         public static boolean IS_RED_ALLIANCE = false;
 
     }

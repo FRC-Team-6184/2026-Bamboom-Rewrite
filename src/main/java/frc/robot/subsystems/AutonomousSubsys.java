@@ -22,6 +22,9 @@ public class AutonomousSubsys extends SubsystemBase {
 
     private SendableChooser<AutonomousEnums> autoChooser = new SendableChooser<AutonomousEnums>();
 
+    private boolean isRedAlliance = true;
+    private boolean isBlueAlliance = false;
+
     public AutonomousSubsys() {
         super();
 
@@ -113,7 +116,7 @@ public class AutonomousSubsys extends SubsystemBase {
     }
 
     private void setAsBlueAlliance() {
-        SoftwareObjects.IS_BLUE_ALLIANCE = true;
+        isBlueAlliance = true;
         SoftwareObjects.IS_RED_ALLIANCE = false;
     }
 
