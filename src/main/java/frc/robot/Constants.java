@@ -222,14 +222,7 @@ public final class Constants {
         PURGE_INTAKE_CMD,
 
         // Shooter
-        CHANGE_RPM_CMD,
-        HIGH_SHOOTER_RPM_CMD,
-        LOW_SHOOTER_RPM_CMD,
-        PRESET_SHOOT_CMD,
-        SHOOT_AT_SPEED_CMD,
-        SHOOTER_CMD,
-        SHOOTER_RPM_CONTROL_CMD,
-        TEMP_SHOOTER_CMD,
+        ACTIVATE_SHOOTER_CMD,
 
         // Swerve
         TELEOP_DRIVE_CMD,

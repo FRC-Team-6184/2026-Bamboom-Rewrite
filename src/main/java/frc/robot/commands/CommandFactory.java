@@ -5,6 +5,7 @@ import frc.robot.commands.intake.ActivateIntakeCmd;
 import frc.robot.commands.intake.IntakeDownLSCmd;
 import frc.robot.commands.intake.IntakeDownCmd;
 import frc.robot.commands.intake.PurgeIntakeCmd;
+import frc.robot.commands.shooter.ActivateShooterCmd;
 // import frc.robot.commands.blender.BlenderCommand;
 // import frc.robot.commands.flywheel.FlywheelHighSpeedCommand;
 // import frc.robot.commands.flywheel.FlywheelLowSpeedCommand;
@@ -47,13 +48,6 @@ public class CommandFactory {
      */
     public static Command getCommand(CommandEnums cmdEnum) {
         switch (cmdEnum) {
-                // Blender
-                case BLENDER_CMD: return null;
-
-                // Flywheel
-                case FLYWHEEL_HIGH_SPEED_CMD: return null;
-                case FLYWHEEL_LOW_SPEED_CMD: return null;
-
                 // Intake
                 case AUTONOMOUS_INTAKE_DOWN_CMD: return null;
                 case AUTONOMOUS_START_INTAKE_CMD: return null;
@@ -65,23 +59,16 @@ public class CommandFactory {
                 case INTAKE_PIVOT_UP_CMD: return null;
                 case PURGE_INTAKE_CMD: return new PurgeIntakeCmd(Subsystems.INTAKE_SUBSYS);
 
-                // Other
-                case LOCK_ON_CMD: return null;
-                case RESET_GYRO_CMD: return null;
-
                 // Shooter
-                case CHANGE_RPM_CMD: return null;
-                case HIGH_SHOOTER_RPM_CMD: return null;
-                case LOW_SHOOTER_RPM_CMD: return null;
-                case PRESET_SHOOT_CMD: return null;
-                case SHOOT_AT_SPEED_CMD: return null;
-                case SHOOTER_CMD: return null;
-                case SHOOTER_RPM_CONTROL_CMD: return null;
-                case TEMP_SHOOTER_CMD: return null;
+                case ACTIVATE_SHOOTER_CMD: return new ActivateShooterCmd(Subsystems.SHOOTER_SUBSYS);
 
                 // Swerve
                 case TELEOP_DRIVE_CMD: return new TeleopDriveCmd(Subsystems.SWERVE_SUBSYS);
                 case XFORMATION_CMD: return null;
+
+                // Other
+                case LOCK_ON_CMD: return null;
+                case RESET_GYRO_CMD: return null;
 
                 // If invalid cmdEnum
                 default: throw new IllegalArgumentException("Unknown command, check Constants.java");

@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.Timer;
 public class ActivateShooterCmd extends Command {
     private final ShooterSubsys SHOOTER;
     private AngularVelocity shooterVelocity;
-    private boolean shouldBeStopped = false;
     private final double TARGET_RPS = 3800/60; // Eventually wanna move this into constants.java
     private Timer timer = new Timer();
 

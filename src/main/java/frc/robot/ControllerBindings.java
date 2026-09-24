@@ -26,23 +26,37 @@ public class ControllerBindings {
     }
 
     private void configureBindings() {
-        DRIVE_CONTROLLER.x().toggleOnTrue(
-            CommandFactory.getCommand(CommandEnums.XFORMATION_CMD));
+        // XFORMATION
+        DRIVE_CONTROLLER.x().onTrue(
+            CommandFactory.getCommand(CommandEnums.XFORMATION_CMD)
+        );
 
+        // RESET THE GYRO
         DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).whileTrue(
-            CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD));
+            CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD)
+        );
 
+        // LOCK ON
         DRIVE_CONTROLLER.b().whileTrue(
-            CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD));
+            CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD)
+        );
         
-        CO_DRIVE_CONTROLLER.R1().toggleOnTrue(
+        // ACTIVATE INTAKE
+        CO_DRIVE_CONTROLLER.R1().onTrue(
             CommandFactory.getCommand(CommandEnums.ACTIVATE_INTAKE_CMD)
         );
 
-        // TODO: What do these 4 and 0.8 numbers mean? ):
+        // PURGE INTAKE
         CO_DRIVE_CONTROLLER.axisGreaterThan(4, 0.8).whileTrue(
             CommandFactory.getCommand(CommandEnums.PURGE_INTAKE_CMD)
         );
+
+        // hold right trigger co driver to turn on shooter
+        CO_DRIVE_CONTROLLER.R1().onTrue(
+            CommandFactory.getCommand(CommandEnums.ACTIVATE_SHOOTER_CMD)
+        );
+
+
         // CO_DRIVE_CONTROLLER.povUp().onTrue(cmdIncreaseRPM);
         // CO_DRIVE_CONTROLLER.povDown().onTrue(cmdDecreaseRPM);
 
