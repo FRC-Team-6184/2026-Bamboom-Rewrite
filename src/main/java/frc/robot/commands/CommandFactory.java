@@ -2,10 +2,15 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.intake.ActivateIntakeCmd;
+import frc.robot.commands.intake.AutoActivateIntakeCmd;
 import frc.robot.commands.intake.IntakeDownLSCmd;
 import frc.robot.commands.intake.IntakeDownCmd;
+import frc.robot.commands.intake.IntakeUpCmd;
 import frc.robot.commands.intake.PurgeIntakeCmd;
 import frc.robot.commands.shooter.ActivateShooterCmd;
+import frc.robot.commands.intake.AutoActivateIntakeCmd;
+import frc.robot.commands.intake.AutoIntakeDownLSCmd;
+
 // import frc.robot.commands.blender.BlenderCommand;
 // import frc.robot.commands.flywheel.FlywheelHighSpeedCommand;
 // import frc.robot.commands.flywheel.FlywheelLowSpeedCommand;
@@ -49,14 +54,12 @@ public class CommandFactory {
     public static Command getCommand(CommandEnums cmdEnum) {
         switch (cmdEnum) {
                 // Intake
-                case AUTONOMOUS_INTAKE_DOWN_CMD: return null;
-                case AUTONOMOUS_START_INTAKE_CMD: return null;
+                case AUTONOMOUS_INTAKE_DOWN_CMD: return new AutoIntakeDownLSCmd(Subsystems.INTAKE_SUBSYS);
+                case AUTONOMOUS_ACTIVATE_INTAKE_CMD: return new AutoActivateIntakeCmd(Subsystems.INTAKE_SUBSYS);
                 case ACTIVATE_INTAKE_CMD: return new ActivateIntakeCmd(Subsystems.INTAKE_SUBSYS);
-                case INTAKE_MANAGER_CMD: return null;
-                case INTAKE_PIVOT_CMD: return null;
                 case PIVOT_INTAKE_DOWN_CMD: return new IntakeDownCmd(Subsystems.INTAKE_SUBSYS);
                 case PIVOT_INTAKE_DOWN_LS_CMD: return new IntakeDownLSCmd(Subsystems.INTAKE_SUBSYS);
-                case INTAKE_PIVOT_UP_CMD: return null;
+                case INTAKE_PIVOT_UP_CMD: return new IntakeUpCmd(Subsystems.INTAKE_SUBSYS);
                 case PURGE_INTAKE_CMD: return new PurgeIntakeCmd(Subsystems.INTAKE_SUBSYS);
 
                 // Shooter

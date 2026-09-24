@@ -65,14 +65,6 @@ public class ShooterSubsys extends SubsystemBase {
 
     }
 
-    /**
-     * Probably should move this complexish logic into a command
-     * Fix this so things remain spinning after flywheel goes underspeed
-     */
-    public void startShooter(double rps) {
-
-    }
-
     public void stopShooter() {
         setFlywheelSpeed(0);
         setKickerSpeed(0);
@@ -91,6 +83,7 @@ public class ShooterSubsys extends SubsystemBase {
      * Sets the speed of the top shooter motors. Be careful that the speed is in Rotations per <b>Second</b> (RPS) and not Rotations per <b>Minute</b> (RPM)
      * @param rps Desired speed of the shooter in rotations per second
      */
+    // TODO: Make this negative to reverse direction
     public void setFlywheelSpeed(double rps) {
         topMotorSpeedRequest.withFeedForward(rps);
         FLYWHEEL_LEFT_MOTOR.setControl(topMotorSpeedRequest);
@@ -110,6 +103,7 @@ public class ShooterSubsys extends SubsystemBase {
         setKickerSpeed(0);
     }
 
+    // TODO: Make this negative to reverse direction
     public void setBlenderSpeed(double rps) {
         blenderMotorSpeedRequest.withFeedForward(rps);
         BLENDER_MOTOR.setControl(blenderMotorSpeedRequest);

@@ -21,7 +21,7 @@ public class Autonomous {
         );
         NamedCommands.registerCommand(
             "AutoIntakeStart", 
-            CommandFactory.getCommand(CommandEnums.AUTONOMOUS_START_INTAKE_CMD) 
+            CommandFactory.getCommand(CommandEnums.AUTONOMOUS_ACTIVATE_INTAKE_CMD) 
         );
         // -Reece TODO: Verify that the new BLENDER_CMD is the same as the old cmdAutoBlender
         // cuz it might not be working otherwise
