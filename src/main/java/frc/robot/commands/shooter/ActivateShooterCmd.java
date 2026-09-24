@@ -6,22 +6,19 @@ import frc.robot.commands.shooter.DecreaseFlywheelRPSCmd;
 import frc.robot.commands.shooter.IncreaseFlywheelRPSCmd;
 import frc.robot.subsystems.ShooterSubsys;
 
-public class ActivateFlywheelCmd extends Command {
+public class ActivateShooterCmd extends Command {
     private final ShooterSubsys SHOOTER;
-    double rps;
 
-    public ActivateFlywheelCmd(ShooterSubsys shooter, double rps) {
+    public ActivateShooterCmd(ShooterSubsys shooter) {
         this.SHOOTER = shooter;
-        this.rps = rps;
     }
 
     @Override
     public void initialize() {
-        SHOOTER.setFlywheelSpeed(rps);
+        SHOOTER.startShooter();
         super.alongWith(new DecreaseFlywheelRPSCmd()); // Im not sure I should be instantiating this
         super.alongWith(new IncreaseFlywheelRPSCmd());
     }
-
 
     @Override
     public void execute() {
@@ -30,6 +27,6 @@ public class ActivateFlywheelCmd extends Command {
 
     @Override
     public void end(boolean interrupted) {
-        SHOOTER.stopFlywheel();
+        SHOOTER.stopShooter();
     }
 }
