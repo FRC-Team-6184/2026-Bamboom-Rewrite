@@ -7,7 +7,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.networktables.DoubleEntry;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.DigitalInputOutput;
+import frc.robot.Constants.DIO;
 import frc.robot.Constants.DigitalValues.Speeds;
 import frc.robot.Constants.MotorControllers;
 import frc.robot.Constants.SoftwareObjects;
@@ -20,7 +20,7 @@ import frc.robot.Constants.SoftwareObjects;
 
 // TODO: Clean up generally
 public class IntakeSubsys extends SubsystemBase {
-    private final DigitalInput kLimitSwitch;
+    private final DigitalInput INTAKE_LIMIT_SWITCH;
     private final TalonFX INTAKE_PIVOT_MOTOR;
     private final TalonFX FL_INTAKE_MOTOR;
     private final TalonFX FR_INTAKE_MOTOR;
@@ -37,7 +37,7 @@ public class IntakeSubsys extends SubsystemBase {
     public IntakeSubsys() {
         super();
 
-        kLimitSwitch = DigitalInputOutput.INTAKE_LIMIT_SWITCH;
+        INTAKE_LIMIT_SWITCH = DIO.INTAKE_LIMIT_SWITCH;
         INTAKE_PIVOT_MOTOR = MotorControllers.INTAKE_PIVOT_MOTOR;
         FL_INTAKE_MOTOR = MotorControllers.FL_ACTIVE_INTAKE_MOTOR;
         FR_INTAKE_MOTOR = MotorControllers.FR_ACTIVE_INTAKE_MOTOR;
@@ -95,7 +95,7 @@ public class IntakeSubsys extends SubsystemBase {
      * @return Returns true when the limit switch is active
      */
     public boolean isSwitchHit() {
-        return !kLimitSwitch.get(); //True when not hit, false when hit, so not to make it function more as expected
+        return !INTAKE_LIMIT_SWITCH.get(); //True when not hit, false when hit, so not to make it function more as expected
     }
 
     /**

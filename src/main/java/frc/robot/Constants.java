@@ -154,8 +154,8 @@ public final class Constants {
     }
 
     // Software things below
-    public static final class DigitalInputOutput {
-        public static final DigitalInput INTAKE_LIMIT_SWITCH = new DigitalInput(6); //This does exist! Hooray!
+    public static final class DIO {
+        public static final DigitalInput INTAKE_LIMIT_SWITCH = new DigitalInput(0); //This does exist! Hooray!
         // public static final DigitalInput INTAKE_BOTTOM_LIMIT_SWITCH = new DigitalInput(1); THIS DOES NOT EXIST
     }
 
