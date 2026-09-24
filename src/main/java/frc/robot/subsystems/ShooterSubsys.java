@@ -64,4 +64,26 @@ public class ShooterSubsys extends SubsystemBase {
         shooterLeftMotor.setControl(topMotorSpeedRequest);
         shooterRightMotor.setControl(topMotorSpeedRequest);
     }
+
+    public void stopTopShooter() {
+        setTopShooterSpeed(0);
+    }
+
+    public void setKickerSpeed(double rps) {
+        kickerMotorSpeedRequest.withFeedForward(rps);
+        kickerMotor.setControl(kickerMotorSpeedRequest);
+    }
+
+    public void stopKicker() {
+        setKickerSpeed(0);
+    }
+
+    public void setBlenderSpeed(double rps) {
+        blenderMotorSpeedRequest.withFeedForward(rps);
+        blenderMotor.setControl(blenderMotorSpeedRequest);
+    }
+
+    public void stopBlender() {
+        setBlenderSpeed(0);
+    }
 }
