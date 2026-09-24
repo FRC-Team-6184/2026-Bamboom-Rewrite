@@ -34,12 +34,12 @@ public class ShooterSubsys extends SubsystemBase {
     public ShooterSubsys() {
         super();
 
-        //Set feedforward configs for the motors so they can be RPM controlled :D
+        // Set feedforward configs for the motors so they can be RPM controlled :D
 
-        //TODO: Set one as a follower of the other
-        //While these motors are linked together and it would be preferable just to have one as a follower of the other
-        //I don't know if I can trust CTRE follower stuff as of right now, so I'm not gonna use it.
-        //We'll have to test and find out after Spacecoast, I'm just being overly careful and anxious about something breaking
+        // TODO: Set one as a follower of the other
+        // While these motors are linked together and it would be preferable just to have one as a follower of the other
+        // I don't know if I can trust CTRE follower stuff as of right now, so I'm not gonna use it.
+        // We'll have to test and find out after Spacecoast, I'm just being overly careful and anxious about something breaking
         ///- William H.
         shooterLeftMotor.getConfigurator().apply(MotorConstants.TOP_SHOOTER_CONFIG);
         shooterRightMotor.getConfigurator().apply(MotorConstants.TOP_SHOOTER_CONFIG);

@@ -63,7 +63,7 @@ public class IntakeSubsys extends SubsystemBase {
 
     // Pivoting Motor
     public void pivotUp() {
-        INTAKE_PIVOT_MOTOR.set(-0.75 * pivotSpeed);
+        INTAKE_PIVOT_MOTOR.set(-0.75 * pivotSpeed); // Replace -0.75 with one of the speed constants
     }
 
     public void pivotDown() {
