@@ -2,8 +2,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.intake.ActivateIntakeCmd;
-import frc.robot.commands.intake.PivotIntakeDownLSCmd;
-import frc.robot.commands.intake.PivotIntakeDownTimedCmd;
+import frc.robot.commands.intake.IntakeDownLSCmd;
+import frc.robot.commands.intake.IntakeDownCmd;
 import frc.robot.commands.intake.PurgeIntakeCmd;
 // import frc.robot.commands.blender.BlenderCommand;
 // import frc.robot.commands.flywheel.FlywheelHighSpeedCommand;
@@ -60,8 +60,8 @@ public class CommandFactory {
                 case ACTIVATE_INTAKE_CMD: return new ActivateIntakeCmd(Subsystems.INTAKE_SUBSYS);
                 case INTAKE_MANAGER_CMD: return null;
                 case INTAKE_PIVOT_CMD: return null;
-                case PIVOT_INTAKE_DOWN_TIMED: return new PivotIntakeDownTimedCmd(Subsystems.INTAKE_SUBSYS);
-                case PIVOT_INTAKE_DOWN_LS_CMD: return new PivotIntakeDownLSCmd(Subsystems.INTAKE_SUBSYS);
+                case PIVOT_INTAKE_DOWN_TIMED: return new IntakeDownCmd(Subsystems.INTAKE_SUBSYS);
+                case PIVOT_INTAKE_DOWN_LS_CMD: return new IntakeDownLSCmd(Subsystems.INTAKE_SUBSYS);
                 case INTAKE_PIVOT_UP_CMD: return null;
                 case PURGE_INTAKE_CMD: return new PurgeIntakeCmd(Subsystems.INTAKE_SUBSYS);
 

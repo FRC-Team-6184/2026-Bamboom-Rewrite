@@ -197,6 +197,7 @@ public final class Constants {
         public static final MAXSwerveModule BACK_RIGHT_MODULE = new MAXSwerveModule(MotorControllers.BR_DRIVE_MOTOR, MotorControllers.BR_TURN_MOTOR, DriveConstants.BACK_RIGHT_CHASSIS_ANGULAR_OFFSET);
         public static final SwerveDrivePoseEstimator3d POSE_ESTIMATOR = new SwerveDrivePoseEstimator3d(DriveConstants.DRIVE_KINEMATICS, Gyro.GYRO.getRotation3d(), new SwerveModulePosition[] {FRONT_LEFT_MODULE.getPosition(), FRONT_RIGHT_MODULE.getPosition(), BACK_LEFT_MODULE.getPosition(), BACK_RIGHT_MODULE.getPosition()}, new Pose3d());
 
+        
     }
 
     // TODO: Ensure that the name of the enums and the name of the actual commands are identical

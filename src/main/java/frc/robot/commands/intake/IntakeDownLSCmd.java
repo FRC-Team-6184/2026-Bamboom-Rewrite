@@ -9,10 +9,10 @@ import frc.robot.Constants.DigitalValues.Speeds;
 /**
  * Limit switch is not wired as of tuesday, don't use this command before wiring the switch
  */
-public class PivotIntakeDownLSCmd extends Command {
+public class IntakeDownLSCmd extends Command {
     private final IntakeSubsys intake;
 
-    public PivotIntakeDownLSCmd(IntakeSubsys intake) {
+    public IntakeDownLSCmd(IntakeSubsys intake) {
         super();
         this.intake = intake;
         this.addRequirements(intake); 
