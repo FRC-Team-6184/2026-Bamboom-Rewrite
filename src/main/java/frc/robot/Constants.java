@@ -216,7 +216,7 @@ public final class Constants {
         ACTIVATE_INTAKE_CMD,
         INTAKE_MANAGER_CMD,
         INTAKE_PIVOT_CMD,
-        PIVOT_INTAKE_DOWN_TIMED,
+        PIVOT_INTAKE_DOWN_CMD,
         PIVOT_INTAKE_DOWN_LS_CMD,
         INTAKE_PIVOT_UP_CMD,
         PURGE_INTAKE_CMD,

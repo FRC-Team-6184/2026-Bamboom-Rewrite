@@ -54,7 +54,7 @@ public class CommandFactory {
                 case ACTIVATE_INTAKE_CMD: return new ActivateIntakeCmd(Subsystems.INTAKE_SUBSYS);
                 case INTAKE_MANAGER_CMD: return null;
                 case INTAKE_PIVOT_CMD: return null;
-                case PIVOT_INTAKE_DOWN_TIMED: return new IntakeDownCmd(Subsystems.INTAKE_SUBSYS);
+                case PIVOT_INTAKE_DOWN_CMD: return new IntakeDownCmd(Subsystems.INTAKE_SUBSYS);
                 case PIVOT_INTAKE_DOWN_LS_CMD: return new IntakeDownLSCmd(Subsystems.INTAKE_SUBSYS);
                 case INTAKE_PIVOT_UP_CMD: return null;
                 case PURGE_INTAKE_CMD: return new PurgeIntakeCmd(Subsystems.INTAKE_SUBSYS);
