@@ -13,7 +13,7 @@ import com.ctre.phoenix6.StatusSignal;
 
 import edu.wpi.first.units.AngularVelocityUnit;
 import edu.wpi.first.units.measure.AngularVelocity;
-import edu.wpi.first.wpilibj.Timer;
+
 
 
 public class ShooterSubsys extends SubsystemBase {
@@ -36,15 +36,10 @@ public class ShooterSubsys extends SubsystemBase {
 
     //Speed requests for the individual motors. Separated to try to mitigate mistakes and ensure motors don't accidentally set to the wrong speed.
     private VelocityVoltage topMotorSpeedRequest = new VelocityVoltage(0);
-    private VelocityVoltage kickerMotorSpeedRequest = new VelocityVoltage(0);
+    private VelocityVoltage kickerMotorSpeedRequest =new VelocityVoltage(0);
     private VelocityVoltage blenderMotorSpeedRequest = new VelocityVoltage(0);
 
-    // Target velocity for the flywheel
-    private final double TARGET_RPS = 3800/60; // Eventually wanna move this into constants.java
-    private AngularVelocity shooterVelocity;
-
-    // Timer
-    private final Timer timer = new Timer();
+     private AngularVelocity shooterVelocity = MotorControllers.FLYWHEEL_LEFT_MOTOR.getVelocity().getValue();
 
     public ShooterSubsys() {
         super();
@@ -71,24 +66,25 @@ public class ShooterSubsys extends SubsystemBase {
     }
 
     /**
-     * Currently only does maximum speed, will add configuration for this later. Probably should move this complexish logic into a command
+     * Probably should move this complexish logic into a command
+     * Fix this so things remain spinning after flywheel goes underspeed
      */
-    public void startShooter() {
-        timer.start();
-        setFlywheelSpeed(Speeds.SHOOTER_HIGH_SPEED);
-        if (RotationsPerSecond.convertFrom(shooterVelocity.magnitude(), shooterVelocity.unit()) >= TARGET_RPS || timer.get() >= 1.5) {
-            shooterVelocity = FLYWHEEL_LEFT_MOTOR.getVelocity().getValue();
-            setKickerSpeed(Speeds.SHOOTER_HIGH_SPEED);
-            setBlenderSpeed(Speeds.SHOOTER_HIGH_SPEED);
-        }
-        timer.stop();
-        timer.reset();
+    public void startShooter(double rps) {
+
     }
 
     public void stopShooter() {
         setFlywheelSpeed(0);
         setKickerSpeed(0);
         setBlenderSpeed(0);
+    }
+
+    /**
+     * 
+     * @return double RPS
+     */
+    public double getShooterRPS() {
+        return RotationsPerSecond.convertFrom(shooterVelocity.magnitude(), shooterVelocity.unit());
     }
 
     /**
