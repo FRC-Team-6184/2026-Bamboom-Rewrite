@@ -5,34 +5,33 @@ import frc.robot.subsystems.IntakeSubsys;
 
 import edu.wpi.first.wpilibj.Timer;
 
-// Implementation of the intake pivotation, operating on a timer
-public class PivotIntakeDownTimedCmd extends Command {
+public class PivotIntakeUpTimedCmd extends Command {
+
     private final IntakeSubsys INTAKE;
     private final Timer TIMER = new Timer();
 
-    public PivotIntakeDownTimedCmd(IntakeSubsys intake) {
+    public PivotIntakeUpTimedCmd(IntakeSubsys intake) {
         super();
         this.INTAKE = intake;
-        this.addRequirements(intake); 
+        this.addRequirements(intake);
     }
 
     @Override
     public void initialize() {
         TIMER.start();
-        INTAKE.pivotDown();
+        INTAKE.pivotUp();
     }
 
     @Override
     public void execute() {
-        if (TIMER.get() >= 0.6) {
+        if (TIMER.get() >= 0.25) {
             cancel();
         }
     }
 
     @Override
     public void end(boolean interrupted) {
-        TIMER.stop();
-        TIMER.reset();
-        INTAKE.pivotStop(); // super.cancel() Id imagine already does this, but just making sure.
+        INTAKE.pivotStop();
     }
+
 }
