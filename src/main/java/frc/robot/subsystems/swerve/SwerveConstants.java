@@ -43,7 +43,7 @@ public final class SwerveConstants {
          * this is just making sure the robot knows where the wheels are relative to the
          * center of the robot.
          */
-        public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(new Translation2d(WHEEL_BASE / 2, TRACK_WIDTH / 2), new Translation2d(WHEEL_BASE / 2, -TRACK_WIDTH / 2), new Translation2d(-WHEEL_BASE / 2, TRACK_WIDTH / 2), new Translation2d(-WHEEL_BASE / 2, -TRACK_WIDTH / 2));
+        public static final SwerveDriveKinematics DRIVE_KINEMATICS = new SwerveDriveKinematics(new Translation2d(WHEEL_BASE / 2, TRACK_WIDTH / 2), new Translation2d(WHEEL_BASE / 2, -TRACK_WIDTH / 2), new Translation2d(-WHEEL_BASE / 2, TRACK_WIDTH / 2), new Translation2d(-WHEEL_BASE / 2, -TRACK_WIDTH / 2));
 
         // Angular offsets of the modules relative to the chassis in radians
         /**

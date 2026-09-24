@@ -27,31 +27,23 @@ import frc.robot.subsystems.swerve.SwerveConstants.DriveConstants;
 public class SwerveSubsys extends SubsystemBase {
     // This is directly copied from MAXSwerve template
 
-    // private GameController controller = Controller.GAME_CONTROLLER;
-    // Variables used in the run lambda:
-    private double x;
-    private double y;
-    private double rot;
-    private boolean canRotate = true;
-    private boolean canMove = true;
-
     // Create MAXSwerveModules
     private final MAXSwerveModule FL_MODULE = Constants.SoftwareObjects.FRONT_LEFT_MODULE;
     private final MAXSwerveModule FR_MODULE = Constants.SoftwareObjects.FRONT_RIGHT_MODULE;
     private final MAXSwerveModule BL_MODULE = Constants.SoftwareObjects.BACK_LEFT_MODULE;
     private final MAXSwerveModule BR_MODULE = Constants.SoftwareObjects.BACK_RIGHT_MODULE;
-    private final NetworkTableInstance network = Constants.SoftwareObjects.NETWORK_TABLE_INSTANCE;
+    private final NetworkTableInstance NETWORK = Constants.SoftwareObjects.NETWORK_TABLE_INSTANCE;
 
-    private DoubleEntry positionXEntry = network.getDoubleTopic("PositionX").getEntry(0);
-    private DoubleEntry positionYEntry = network.getDoubleTopic("PositionY").getEntry(0);
-    private DoubleEntry positionZEntry = network.getDoubleTopic("PositionZ").getEntry(0);
+    private DoubleEntry positionXEntry = NETWORK.getDoubleTopic("PositionX").getEntry(0);
+    private DoubleEntry positionYEntry = NETWORK.getDoubleTopic("PositionY").getEntry(0);
+    private DoubleEntry positionZEntry = NETWORK.getDoubleTopic("PositionZ").getEntry(0);
 
     private Field2d field = new Field2d();
     // private GenericEntry field2dEntry = network.getTopic("Field2d").getGenericEntry();
 
     private final Pigeon2 GYRO = Gyro.GYRO;
     private SwerveDrivePoseEstimator3d odometry = Constants.SoftwareObjects.POSE_ESTIMATOR;
-    private SwerveDriveKinematics kinematics = DriveConstants.kDriveKinematics;
+    private SwerveDriveKinematics kinematics = DriveConstants.DRIVE_KINEMATICS;
 
     private static SwerveModuleState xFormation1 = new SwerveModuleState(MetersPerSecond.of(0.0), new Rotation2d(Degree.of(45)));
     private static SwerveModuleState xFormation2 = new SwerveModuleState(MetersPerSecond.of(0.0), new Rotation2d(Degree.of(135)));
