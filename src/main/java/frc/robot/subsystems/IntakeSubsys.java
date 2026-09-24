@@ -77,7 +77,7 @@ public class IntakeSubsys extends SubsystemBase {
     // Intake Motors
     public void startIntake() {
         FL_INTAKE_MOTOR.setControl(intakeMotorSpeedRequest.withVelocity(intakeSpeed));
-        FR_INTAKE_MOTOR.setControl(intakeMotorSpeedRequest.withVelocity(intakeSpeed));
+        FR_INTAKE_MOTOR.setControl(intakeMotorSpeedRequest.withVelocity(intakeSpeed)); // Currently reversed in software, fix after space-coast
     }
 
     public void stopIntake() {
