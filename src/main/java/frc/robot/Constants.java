@@ -124,10 +124,12 @@ public final class Constants {
 
     public static final class MotorControllers {
         // Shooter Motors
-        public static final TalonFX BOTTOM_SHOOTER_WHEEL = new TalonFX(CAN_IDs.SHOOTER_KICKER_WHEEL_ID);
-        public static final TalonFX SHOOTER_LEFT_WHEEL = new TalonFX(CAN_IDs.SHOOTER_LEFT_WHEEL_ID);
-        public static final TalonFX SHOOTER_RIGHT_WHEEL = new TalonFX(CAN_IDs.SHOOTER_RIGHT_WHEEL_ID);
+        public static final TalonFX SHOOTER_KICKER_MOTOR = new TalonFX(CAN_IDs.SHOOTER_KICKER_WHEEL_ID);
+        public static final TalonFX FLYWHEEL_LEFT_MOTOR = new TalonFX(CAN_IDs.SHOOTER_LEFT_WHEEL_ID);
+        public static final TalonFX FLYWHEEL_RIGHT_MOTOR = new TalonFX(CAN_IDs.SHOOTER_RIGHT_WHEEL_ID);
 
+        // Blender
+        public static final TalonFX BLENDER_MOTOR = new TalonFX(CAN_IDs.BLENDER_MOTOR_ID); // Check to make sure this ID is right
 
         // Swerve
         // Left-side Drive Motors
@@ -149,8 +151,7 @@ public final class Constants {
         public static final TalonFX FR_ACTIVE_INTAKE_MOTOR = new TalonFX(CAN_IDs.FR_ACTIVE_INTAKE_ID);
         public static final TalonFX FL_ACTIVE_INTAKE_MOTOR = new TalonFX(CAN_IDs.FL_ACTIVE_INTAKE_ID);
 
-        // Blender
-        public static final TalonFX BLENDER_MOTOR = new TalonFX(CAN_IDs.BLENDER_MOTOR_ID); // Check to make sure this ID is right
+        
     }
 
     // Software things below

@@ -11,15 +11,15 @@ public class ShooterSubsys extends SubsystemBase {
     /**
      * One of the top shooter motors that actually launches the balls. It's on the <b>left</b> side when you're facing the intake.
      */
-    private final TalonFX FLYWHEEL_LEFT_MOTOR = MotorControllers.SHOOTER_LEFT_WHEEL;
+    private final TalonFX FLYWHEEL_LEFT_MOTOR = MotorControllers.FLYWHEEL_LEFT_MOTOR;
     /**
      * One of the top shooter motors that actually launches the balls. It's on the <b>right</b> side when you're facing the intake..
      */
-    private final TalonFX FLYWHEEL_RIGHT_MOTOR = MotorControllers.SHOOTER_RIGHT_WHEEL;
+    private final TalonFX FLYWHEEL_RIGHT_MOTOR = MotorControllers.FLYWHEEL_RIGHT_MOTOR;
     /**
      * Motor on the bottom of the shooter tower that "kicks" them towards the top of the shooter.
      */
-    private final TalonFX KICKER_MOTOR = MotorControllers.BOTTOM_SHOOTER_WHEEL;
+    private final TalonFX KICKER_MOTOR = MotorControllers.SHOOTER_KICKER_MOTOR;
     /**
      * Motor that sends the balls towards the kicker motor. Called the "blender" as it moves them cyclically towards the kicker.
      */
@@ -65,10 +65,6 @@ public class ShooterSubsys extends SubsystemBase {
         FLYWHEEL_RIGHT_MOTOR.setControl(topMotorSpeedRequest);
     }
 
-    public void startFlywheel(double rps) {
-
-    }
-
     public void stopFlywheel() {
         setFlywheelSpeed(0);
     }
@@ -78,11 +74,6 @@ public class ShooterSubsys extends SubsystemBase {
         KICKER_MOTOR.setControl(kickerMotorSpeedRequest);
     }
 
-    public void startKicker(double rps) {
-
-    }
-
-
     public void stopKicker() {
         setKickerSpeed(0);
     }
@@ -91,11 +82,6 @@ public class ShooterSubsys extends SubsystemBase {
         blenderMotorSpeedRequest.withFeedForward(rps);
         BLENDER_MOTOR.setControl(blenderMotorSpeedRequest);
     }
-
-    public void startBlender(double rps) {
-
-    }
-
 
     public void stopBlender() {
         setBlenderSpeed(0);
