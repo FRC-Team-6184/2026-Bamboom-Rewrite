@@ -41,6 +41,9 @@ import frc.robot.subsystems.swerve.SwerveConstants.DriveConstants;
  * This class holds important information regarding hardware and related
  * things like CAN ID's, Motor controllers, Chassis measurements, etc.
  */
+
+ // Note for reece - static not only means this data exists for the entire runtime, but static data is also set up first.
+ // That means instantiated, so we don't need to instantiate the Constants class for those things to exist and be ready-to-go.
 public final class Constants {
     public static final class Controller {
         public static final int XBOX_P = 0;
@@ -48,6 +51,8 @@ public final class Constants {
 
         public static final int PS5_P = 1;        
         public static final CommandPS5Controller PS5 = new CommandPS5Controller(PS5_P);
+
+        public static final ControllerBindings CB = new ControllerBindings();
     }
 
     public static final class Subsystems {
@@ -212,11 +217,11 @@ public final class Constants {
 
         // Intake
         AUTONOMOUS_INTAKE_DOWN_CMD,
-        AUTONOMOUS_START_INTAKE_CMD,
+        AUTONOMOUS_ACTIVATE_INTAKE_CMD,
         ACTIVATE_INTAKE_CMD,
         INTAKE_MANAGER_CMD,
         INTAKE_PIVOT_CMD,
-        PIVOT_INTAKE_DOWN_TIMED,
+        PIVOT_INTAKE_DOWN_CMD,
         PIVOT_INTAKE_DOWN_LS_CMD,
         INTAKE_PIVOT_UP_CMD,
         PURGE_INTAKE_CMD,
@@ -231,6 +236,7 @@ public final class Constants {
         SHOOTER_RPM_CONTROL_CMD,
         TEMP_SHOOTER_CMD,
         TEST_SHOOTER_CMD,
+        ACTIVATE_SHOOTER_CMD,
 
         // Swerve
         TELEOP_DRIVE_CMD,

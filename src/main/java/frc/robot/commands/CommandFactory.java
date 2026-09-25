@@ -2,10 +2,15 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.intake.ActivateIntakeCmd;
+import frc.robot.commands.intake.AutoActivateIntakeCmd;
 import frc.robot.commands.intake.IntakeDownLSCmd;
 import frc.robot.commands.intake.IntakeDownCmd;
+import frc.robot.commands.intake.IntakeUpCmd;
 import frc.robot.commands.intake.PurgeIntakeCmd;
-import frc.robot.commands.shooter.TestShooterCmd;
+import frc.robot.commands.shooter.ActivateShooterCmd;
+import frc.robot.commands.intake.AutoActivateIntakeCmd;
+import frc.robot.commands.intake.AutoIntakeDownLSCmd;
+
 // import frc.robot.commands.blender.BlenderCommand;
 // import frc.robot.commands.flywheel.FlywheelHighSpeedCommand;
 // import frc.robot.commands.flywheel.FlywheelLowSpeedCommand;
@@ -48,42 +53,26 @@ public class CommandFactory {
      */
     public static Command getCommand(CommandEnums cmdEnum) {
         switch (cmdEnum) {
-                // Blender
-                case BLENDER_CMD: return null;
-
-                // Flywheel
-                case FLYWHEEL_HIGH_SPEED_CMD: return null;
-                case FLYWHEEL_LOW_SPEED_CMD: return null;
-
                 // Intake
-                case AUTONOMOUS_INTAKE_DOWN_CMD: return null;
-                case AUTONOMOUS_START_INTAKE_CMD: return null;
+                case AUTONOMOUS_INTAKE_DOWN_CMD: return new AutoIntakeDownLSCmd(Subsystems.INTAKE_SUBSYS);
+                case AUTONOMOUS_ACTIVATE_INTAKE_CMD: return new AutoActivateIntakeCmd(Subsystems.INTAKE_SUBSYS);
                 case ACTIVATE_INTAKE_CMD: return new ActivateIntakeCmd(Subsystems.INTAKE_SUBSYS);
-                case INTAKE_MANAGER_CMD: return null;
-                case INTAKE_PIVOT_CMD: return null;
-                case PIVOT_INTAKE_DOWN_TIMED: return new IntakeDownCmd(Subsystems.INTAKE_SUBSYS);
+                case PIVOT_INTAKE_DOWN_CMD: return new IntakeDownCmd(Subsystems.INTAKE_SUBSYS);
                 case PIVOT_INTAKE_DOWN_LS_CMD: return new IntakeDownLSCmd(Subsystems.INTAKE_SUBSYS);
-                case INTAKE_PIVOT_UP_CMD: return null;
+                case INTAKE_PIVOT_UP_CMD: return new IntakeUpCmd(Subsystems.INTAKE_SUBSYS);
                 case PURGE_INTAKE_CMD: return new PurgeIntakeCmd(Subsystems.INTAKE_SUBSYS);
 
-                // Other
-                case LOCK_ON_CMD: return null;
-                case RESET_GYRO_CMD: return null;
-
                 // Shooter
-                case CHANGE_RPM_CMD: return null;
-                case HIGH_SHOOTER_RPM_CMD: return null;
-                case LOW_SHOOTER_RPM_CMD: return null;
-                case PRESET_SHOOT_CMD: return null;
-                case SHOOT_AT_SPEED_CMD: return null;
-                case SHOOTER_CMD: return null;
-                case SHOOTER_RPM_CONTROL_CMD: return null;
-                case TEMP_SHOOTER_CMD: return null;
+                case ACTIVATE_SHOOTER_CMD: return new ActivateShooterCmd(Subsystems.SHOOTER_SUBSYS);
                 case TEST_SHOOTER_CMD: return new TestShooterCmd(Subsystems.SHOOTER_SUBSYS);
 
                 // Swerve
                 case TELEOP_DRIVE_CMD: return new TeleopDriveCmd(Subsystems.SWERVE_SUBSYS);
                 case XFORMATION_CMD: return null;
+
+                // Other
+                case LOCK_ON_CMD: return null;
+                case RESET_GYRO_CMD: return null;
 
                 // If invalid cmdEnum
                 default: throw new IllegalArgumentException("Unknown command, check Constants.java");

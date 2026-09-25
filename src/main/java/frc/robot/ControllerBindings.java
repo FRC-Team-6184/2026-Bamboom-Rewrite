@@ -35,11 +35,12 @@ public class ControllerBindings {
         // DRIVE_CONTROLLER.b().whileTrue(
         //     CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD));
         
-        CO_DRIVE_CONTROLLER.R1().toggleOnTrue(
+        // ACTIVATE INTAKE
+        CO_DRIVE_CONTROLLER.R1().onTrue(
             CommandFactory.getCommand(CommandEnums.ACTIVATE_INTAKE_CMD)
         );
 
-        // TODO: What do these 4 and 0.8 numbers mean? ):
+        // PURGE INTAKE
         CO_DRIVE_CONTROLLER.axisGreaterThan(4, 0.8).whileTrue(
             CommandFactory.getCommand(CommandEnums.PURGE_INTAKE_CMD)
         );
