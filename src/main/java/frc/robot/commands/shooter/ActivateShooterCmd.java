@@ -15,7 +15,7 @@ public class ActivateShooterCmd extends Command {
 
     @Override
     public void initialize() {
-        SHOOTER.startShooter();
+        // SHOOTER.startShooter();
         super.alongWith(new DecreaseFlywheelRPSCmd()); // Im not sure I should be instantiating this
         super.alongWith(new IncreaseFlywheelRPSCmd());
     }

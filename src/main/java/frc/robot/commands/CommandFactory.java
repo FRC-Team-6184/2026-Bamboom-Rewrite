@@ -5,6 +5,7 @@ import frc.robot.commands.intake.ActivateIntakeCmd;
 import frc.robot.commands.intake.IntakeDownLSCmd;
 import frc.robot.commands.intake.IntakeDownCmd;
 import frc.robot.commands.intake.PurgeIntakeCmd;
+import frc.robot.commands.shooter.TestShooterCmd;
 // import frc.robot.commands.blender.BlenderCommand;
 // import frc.robot.commands.flywheel.FlywheelHighSpeedCommand;
 // import frc.robot.commands.flywheel.FlywheelLowSpeedCommand;
@@ -78,6 +79,7 @@ public class CommandFactory {
                 case SHOOTER_CMD: return null;
                 case SHOOTER_RPM_CONTROL_CMD: return null;
                 case TEMP_SHOOTER_CMD: return null;
+                case TEST_SHOOTER_CMD: return new TestShooterCmd(Subsystems.SHOOTER_SUBSYS);
 
                 // Swerve
                 case TELEOP_DRIVE_CMD: return new TeleopDriveCmd(Subsystems.SWERVE_SUBSYS);

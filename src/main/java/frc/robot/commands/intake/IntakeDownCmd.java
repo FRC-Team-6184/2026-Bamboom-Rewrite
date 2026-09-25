@@ -10,18 +10,18 @@ public class IntakeDownCmd extends Command {
     public IntakeDownCmd(IntakeSubsys intake) {
         super();
         this.INTAKE = intake;
-        this.addRequirements(intake); 
+        // addRequirements(INTAKE); 
     }
 
     @Override
     public void initialize() {
-        super.withTimeout(0.6); // I believe this goes here? If it doesn't work, move it to the constructor and try that
+        // super.withTimeout(0.6); // I believe this goes here? If it doesn't work, move it to the constructor and try that
         INTAKE.pivotDown();
     }
 
     @Override
     public void execute() {
-        cancel();
+        // cancel();
     }
 
     @Override

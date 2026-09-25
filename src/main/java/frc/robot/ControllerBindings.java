@@ -26,14 +26,14 @@ public class ControllerBindings {
     }
 
     private void configureBindings() {
-        DRIVE_CONTROLLER.x().toggleOnTrue(
-            CommandFactory.getCommand(CommandEnums.XFORMATION_CMD));
+        // DRIVE_CONTROLLER.x().toggleOnTrue(
+        //     CommandFactory.getCommand(CommandEnums.XFORMATION_CMD));
 
-        DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).whileTrue(
-            CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD));
+        // DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).whileTrue(
+        //     CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD));
 
-        DRIVE_CONTROLLER.b().whileTrue(
-            CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD));
+        // DRIVE_CONTROLLER.b().whileTrue(
+        //     CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD));
         
         CO_DRIVE_CONTROLLER.R1().toggleOnTrue(
             CommandFactory.getCommand(CommandEnums.ACTIVATE_INTAKE_CMD)
@@ -43,6 +43,8 @@ public class ControllerBindings {
         CO_DRIVE_CONTROLLER.axisGreaterThan(4, 0.8).whileTrue(
             CommandFactory.getCommand(CommandEnums.PURGE_INTAKE_CMD)
         );
+
+        CO_DRIVE_CONTROLLER.cross().whileTrue(CommandFactory.getCommand(CommandEnums.TEST_SHOOTER_CMD));
         // CO_DRIVE_CONTROLLER.povUp().onTrue(cmdIncreaseRPM);
         // CO_DRIVE_CONTROLLER.povDown().onTrue(cmdDecreaseRPM);
 
