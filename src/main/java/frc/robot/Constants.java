@@ -85,17 +85,17 @@ public final class Constants {
         public static final int BLENDER_MOTOR_ID = 9;
 
         // Swerve
-        public static final int FL_DRIVE_MOTOR_ID = 5;
-        public static final int FL_TURN_MOTOR_ID = 6;
+        public static final int FL_DRIVE_MOTOR_ID = 5; //1
+        public static final int FL_TURN_MOTOR_ID = 6; //2
 
-        public static final int FR_DRIVE_MOTOR_ID = 1;
-        public static final int FR_TURN_MOTOR_ID = 2;
+        public static final int FR_DRIVE_MOTOR_ID = 1; //5
+        public static final int FR_TURN_MOTOR_ID = 2; //6
 
-        public static final int BL_DRIVE_MOTOR_ID = 7;
-        public static final int BL_TURN_MOTOR_ID = 8;
+        public static final int BL_DRIVE_MOTOR_ID = 7; //3
+        public static final int BL_TURN_MOTOR_ID = 8; //4
 
-        public static final int BR_DRIVE_MOTOR_ID = 3;
-        public static final int BR_TURN_MOTOR_ID = 4;
+        public static final int BR_DRIVE_MOTOR_ID = 3; //7
+        public static final int BR_TURN_MOTOR_ID = 4; //8
 
         // Other
         public static final int GYRO_ID = 20;
@@ -174,7 +174,7 @@ public final class Constants {
             public static final double MEDIUM = 0.66;
             public static final double HIGH = 1;
 
-            public static final double INTAKE_PIVOT = 0.2;
+            public static final double INTAKE_PIVOT = 0.4;
             public static final double INTAKE_SPEED = -0.7;
 
             public static final double SHOOTER_LOW_SPEED = 1500.0 / 60.0;

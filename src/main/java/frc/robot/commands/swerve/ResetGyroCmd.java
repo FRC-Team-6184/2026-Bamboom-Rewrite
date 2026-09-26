@@ -20,6 +20,7 @@ public class ResetGyroCmd extends Command {
     @Override
     public void execute() {
         SWERVE.resetGyro();
+        System.out.println("RESET GYRO");
     }
 
     @Override

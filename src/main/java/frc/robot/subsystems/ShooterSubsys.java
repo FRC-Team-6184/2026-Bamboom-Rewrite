@@ -67,7 +67,7 @@ public class ShooterSubsys extends SubsystemBase {
     }
 
     public void stopShooter() {
-        setFlywheelTargetSpeed(0);
+        setFlywheelSpeed(0);
         setKickerSpeed(0);
         setBlenderSpeed(0);
     }
@@ -92,7 +92,7 @@ public class ShooterSubsys extends SubsystemBase {
     }
 
     public void stopFlywheel() {
-        setFlywheelTargetSpeed(0);
+        setFlywheelSpeed(0);
     }
 
     public void setKickerSpeed(double rps) {

@@ -99,10 +99,17 @@ public class SwerveSubsys extends SubsystemBase {
 
         SwerveModuleState[] swerveModuleStates = kinematics.toSwerveModuleStates(fieldRelative ? ChassisSpeeds.fromFieldRelativeSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered, GYRO.getRotation3d().toRotation2d()) : new ChassisSpeeds(xSpeedDelivered, ySpeedDelivered, rotDelivered));
         SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, DriveConstants.MAX_SPEED_METERS_PER_SECOND);
+        // swerveModuleStates[2].angle = swerveModuleStates[2].angle.times(-1);
+        // swerveModuleStates[3].angle = swerveModuleStates[3].angle.times(-1);
+
+
+
         FL_MODULE.setDesiredState(swerveModuleStates[0]);
         FR_MODULE.setDesiredState(swerveModuleStates[1]);
         BL_MODULE.setDesiredState(swerveModuleStates[2]);
         BR_MODULE.setDesiredState(swerveModuleStates[3]);
+
+        System.out.println(swerveModuleStates[0].angle.getDegrees() + " | " + swerveModuleStates[1].angle.getDegrees() + " | " + swerveModuleStates[2].angle.getDegrees() + " | " + swerveModuleStates[3].angle.getDegrees());
     }
 
     public void setXFormation() {
