@@ -178,7 +178,7 @@ public final class Constants {
             public static final double MEDIUM = 0.66;
             public static final double HIGH = 1;
 
-            public static final double INTAKE_PIVOT = 0.2;
+            public static final double INTAKE_PIVOT = 0.35;
             public static final double INTAKE_SPEED = -0.7;
 
             public static final double SHOOTER_LOW_SPEED = 1500.0 / 60.0;

@@ -88,7 +88,6 @@ public class IntakeSubsys extends SubsystemBase {
     /**
      * 
      * @param rps Speed for intake motor to do in Rotations Per Second (<b><i> NOT ROTATIONS PER MINUTE </i></b>)
-     * @see c Currently no implementation
      */
     public void setIntakeSpeed(double rps) {
         // kIntakeMotor.setControl(intakeMotorSpeedRequest.withVelocity(rps));
