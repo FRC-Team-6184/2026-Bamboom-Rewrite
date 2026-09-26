@@ -20,6 +20,7 @@ import frc.robot.subsystems.IntakeSubsys;
 import frc.robot.subsystems.VisionSubsys;
 import frc.robot.subsystems.swerve.MAXSwerveModule;
 import frc.robot.subsystems.swerve.SwerveConstants.DriveConstants;
+import com.revrobotics.spark.SparkFlex;
 
 /*
  * Hardware CAN IDs: (Verify that all are correct sometime) All motor controllers below, down to the BR Swerve Turn, are SparkMax Front Left Swerve Drive - 1 | Neo (Rev Robotics) Front Left Swerve Turn - 2 | Neo 550 (Rev Robotics) Front Right Swerve Drive - 3 | Neo (Rev Robotics) Front Right Swerve Turn - 4 | Neo 550 (Rev Robotics) Back Left Swerve Drive - 5 | Neo (Rev Robotics) Back Left Swerve Turn - 6 | Neo 550 (Rev Robotics) Back Right Swerve Drive - 7 | Neo (Rev Robotics) Back Right Swerve Turn - 8 | Neo 550 (Rev Robotics)
@@ -153,8 +154,8 @@ public final class Constants {
 
         // Intake
         public static final TalonFX INTAKE_PIVOT_MOTOR = new TalonFX(CAN_IDs.INTAKE_PIVOT_MOTOR_ID); // Check to make sure this ID is right
-        public static final TalonFX FR_ACTIVE_INTAKE_MOTOR = new TalonFX(CAN_IDs.FR_ACTIVE_INTAKE_ID);
-        public static final TalonFX FL_ACTIVE_INTAKE_MOTOR = new TalonFX(CAN_IDs.FL_ACTIVE_INTAKE_ID);
+        public static final SparkFlex FR_ACTIVE_INTAKE_MOTOR = new SparkFlex(CAN_IDs.FR_ACTIVE_INTAKE_ID, MotorType.kBrushless);
+        public static final SparkFlex FL_ACTIVE_INTAKE_MOTOR = new SparkFlex(CAN_IDs.FL_ACTIVE_INTAKE_ID, MotorType.kBrushless);
 
         
     }
