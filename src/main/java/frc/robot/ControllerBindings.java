@@ -27,17 +27,23 @@ public class ControllerBindings {
     }
 
     private void configureBindings() {
-        // DRIVE_CONTROLLER.x().toggleOnTrue(
-        //     CommandFactory.getCommand(CommandEnums.XFORMATION_CMD));
+        // // XFORMATION
+        // DRIVE_CONTROLLER.x().onTrue(
+        //     CommandFactory.getCommand(CommandEnums.XFORMATION_CMD)
+        // );
 
+        // // RESET THE GYRO
         // DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).whileTrue(
-        //     CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD));
+        //     CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD)
+        // );
 
+        // // LOCK ON
         // DRIVE_CONTROLLER.b().whileTrue(
-        //     CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD));
-        
+        //     CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD)
+        // );
+
         // ACTIVATE INTAKE
-        CO_DRIVE_CONTROLLER.R1().whileTrue(
+        CO_DRIVE_CONTROLLER.L1().onTrue(
             CommandFactory.getCommand(CommandEnums.ACTIVATE_INTAKE_CMD)
         );
 
@@ -46,7 +52,12 @@ public class ControllerBindings {
             CommandFactory.getCommand(CommandEnums.PURGE_INTAKE_CMD)
         );
 
-        CO_DRIVE_CONTROLLER.circle().whileTrue(CommandFactory.getCommand(CommandEnums.SHOOTER_CMD));
+        // ACTIVATE SHOOTER on R1 
+        CO_DRIVE_CONTROLLER.R1().onTrue(
+            CommandFactory.getCommand(CommandEnums.ACTIVATE_SHOOTER_CMD)
+        );
+
+
         // CO_DRIVE_CONTROLLER.povUp().onTrue(cmdIncreaseRPM);
         // CO_DRIVE_CONTROLLER.povDown().onTrue(cmdDecreaseRPM);
 

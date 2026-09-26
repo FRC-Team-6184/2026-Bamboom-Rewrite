@@ -68,9 +68,6 @@ public class CommandFactory {
 
                 // Shooter
                 case ACTIVATE_SHOOTER_CMD: return new ActivateShooterCmd(Subsystems.SHOOTER_SUBSYS);
-                case TEST_SHOOTER_CMD: return new TestShooterCmd(Subsystems.SHOOTER_SUBSYS);
-                case SHOOTER_INCREASE_SPEED_CMD: return new IncreaseFlywheelRPSCmd(Subsystems.SHOOTER_SUBSYS);
-                case SHOOTER_DECREASE_SPEED_CMD: return new DecreaseFlywheelRPSCmd(Subsystems.SHOOTER_SUBSYS);
 
                 // Swerve
                 case TELEOP_DRIVE_CMD: return new TeleopDriveCmd(Subsystems.SWERVE_SUBSYS);
