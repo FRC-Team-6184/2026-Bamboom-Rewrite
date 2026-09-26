@@ -6,13 +6,14 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.AutonomousEnums;
+import frc.robot.Constants.SoftwareObjects;
 
-public class AutonomousSubsys extends SubsystemBase {
 
-    private boolean isRedAlliance = true;
-    private boolean isBlueAlliance = false;
+/**
+ * Exists to manage what auto gets run at the start of the match among some other important things
+ */
 
+public class TempAutoSubsys extends SubsystemBase {
     private PathPlannerAuto blueDepotTrench = new PathPlannerAuto("Blue Depot Trench");
     private PathPlannerAuto blueHumanTrench = new PathPlannerAuto("Blue Human Station Trench");
     private PathPlannerAuto redDepotTrench = new PathPlannerAuto("Red Depot Trench");
@@ -21,25 +22,33 @@ public class AutonomousSubsys extends SubsystemBase {
     private PathPlannerAuto blueDepotTrenchDouble = new PathPlannerAuto("Blue Depot Trench Double");
     private PathPlannerAuto redDepotTrenchDouble = new PathPlannerAuto("Red Depot Trench Double");
 
-    private SendableChooser<AutonomousEnums> autoChooser = new SendableChooser<AutonomousEnums>();
+    private boolean IS_RED_ALLIANCE = false;
+    private boolean IS_BLUE_ALLIANCE = true;
 
-    public AutonomousSubsys() {
+    private enum AutoEnum {
+        BlueDepotTrench, BlueHumanTrench, RedDepotTrench, RedHumanTrench, Practice, BlueDepotTrenchDouble, RedDepotTrenchDouble
+    }
+
+    private SendableChooser<AutoEnum> autoChooser = new SendableChooser<AutoEnum>();
+
+    public TempAutoSubsys() {
         super();
 
-        autoChooser.addOption("Blue Depot Trench", AutonomousEnums.BlueDepotTrench);
-        autoChooser.addOption("Blue Human Trench", AutonomousEnums.BlueHumanTrench);
-        autoChooser.addOption("Red Depot Trench", AutonomousEnums.RedDepotTrench);
-        autoChooser.addOption("Red Human Trench", AutonomousEnums.RedHumanTrench);
-        autoChooser.addOption("TestingAndPractice", AutonomousEnums.Practice);
-        autoChooser.addOption("Blue Depot Trench DOUBLE", AutonomousEnums.BlueDepotTrenchDouble);
-        autoChooser.addOption("Red Depot Trench DOUBLE", AutonomousEnums.RedDepotTrenchDouble);
+        autoChooser.addOption("Blue Depot Trench", AutoEnum.BlueDepotTrench);
+        autoChooser.addOption("Blue Human Trench", AutoEnum.BlueHumanTrench);
+        autoChooser.addOption("Red Depot Trench", AutoEnum.RedDepotTrench);
+        autoChooser.addOption("Red Human Trench", AutoEnum.RedHumanTrench);
+        autoChooser.addOption("TestingAndPractice", AutoEnum.Practice);
+        autoChooser.addOption("Blue Depot Trench DOUBLE", AutoEnum.BlueDepotTrenchDouble);
+        autoChooser.addOption("Red Depot Trench DOUBLE", AutoEnum.RedDepotTrenchDouble);
 
-        autoChooser.setDefaultOption("Blue Human Trench", AutonomousEnums.BlueHumanTrench);
+
+        autoChooser.setDefaultOption("Blue Human Trench", AutoEnum.BlueHumanTrench);
         SmartDashboard.putData("AutoChooser", autoChooser);
     }
 
     public Optional<Pose2d> getSelectedAutoStartingPose() {
-        AutonomousEnums selected = autoChooser.getSelected();
+        AutoEnum selected = autoChooser.getSelected();
         PathPlannerAuto auto;
         if (selected == null) {
             auto = blueHumanTrench;
@@ -68,12 +77,11 @@ public class AutonomousSubsys extends SubsystemBase {
                     break;
             }
         }
-
         return Optional.of(auto.getStartingPose());
     }
 
     public PathPlannerAuto getSelectedAuto() {
-        AutonomousEnums selected = autoChooser.getSelected();
+        AutoEnum selected = autoChooser.getSelected();
         if (selected == null) {
             setAsBlueAlliance();
             return blueHumanTrench;
@@ -114,14 +122,15 @@ public class AutonomousSubsys extends SubsystemBase {
     }
 
     private void setAsBlueAlliance() {
-        isBlueAlliance = true;
-        isRedAlliance = false;
+        IS_BLUE_ALLIANCE = true;
+        IS_RED_ALLIANCE = false;
     }
 
     private void setAsRedAlliance() {
-        isBlueAlliance = false;
-        isRedAlliance = true;
+        IS_BLUE_ALLIANCE = false;
+        IS_RED_ALLIANCE = true;
     }
+
 
 
 }
