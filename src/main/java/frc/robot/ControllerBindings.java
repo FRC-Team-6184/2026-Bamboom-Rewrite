@@ -41,12 +41,17 @@ public class ControllerBindings {
         //     CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD)
         // );
 
+        // ACTIVATE INTAKE
+        CO_DRIVE_CONTROLLER.L1().onTrue(
+            CommandFactory.getCommand(CommandEnums.ACTIVATE_INTAKE_CMD)
+        );
+
         // PURGE INTAKE
         CO_DRIVE_CONTROLLER.axisGreaterThan(4, 0.8).whileTrue(
             CommandFactory.getCommand(CommandEnums.PURGE_INTAKE_CMD)
         );
 
-        // hold right trigger co driver to turn on shooter
+        // ACTIVATE SHOOTER on R1 
         CO_DRIVE_CONTROLLER.R1().onTrue(
             CommandFactory.getCommand(CommandEnums.ACTIVATE_SHOOTER_CMD)
         );
