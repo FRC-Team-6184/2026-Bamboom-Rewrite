@@ -48,7 +48,7 @@ public class ControllerBindings {
         );
 
         // PIVOT INTAKE DOWN
-        CO_DRIVE_CONTROLLER.axisLessThan(5, -0.6).whileFalse(
+        CO_DRIVE_CONTROLLER.axisLessThan(1, -0.6).whileFalse(
             CommandFactory.getCommand(CommandEnums.PIVOT_INTAKE_DOWN_LS_CMD)).whileTrue(
                 CommandFactory.getCommand(CommandEnums.INTAKE_PIVOT_UP_CMD)
             );
