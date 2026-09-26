@@ -36,7 +36,7 @@ public class ControllerBindings {
         //     CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD));
         
         // ACTIVATE INTAKE
-        CO_DRIVE_CONTROLLER.R1().onTrue(
+        CO_DRIVE_CONTROLLER.R1().whileTrue(
             CommandFactory.getCommand(CommandEnums.ACTIVATE_INTAKE_CMD)
         );
 
@@ -59,7 +59,7 @@ public class ControllerBindings {
 
         // CO_DRIVE_CONTROLLER.axisGreaterThan(5, 0.12).or(CO_DRIVE_CONTROLLER.axisLessThan(5, -0.12)).whileTrue(cmdIntakePivot); //TODO: make this go to a proportional intake pivot command
 
-        // CO_DRIVE_CONTROLLER.axisLessThan(5, -0.6).whileFalse(cmdLimitSwitchPivot).whileTrue(cmdIntakePivot);
+        CO_DRIVE_CONTROLLER.axisLessThan(5, -0.6).whileFalse(CommandFactory.getCommand(CommandEnums.PIVOT_INTAKE_DOWN_LS_CMD)).whileTrue(CommandFactory.getCommand(CommandEnums.INTAKE_PIVOT_UP_CMD));
 
         // CO_DRIVE_CONTROLLER.povUp().onTrue(cmdIncreaseRPM);
         // CO_DRIVE_CONTROLLER.povDown().onTrue(cmdDecreaseRPM);

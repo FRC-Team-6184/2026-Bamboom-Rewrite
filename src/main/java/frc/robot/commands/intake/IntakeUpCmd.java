@@ -16,7 +16,7 @@ public class IntakeUpCmd extends Command {
 
     @Override
     public void initialize() {
-        super.withTimeout(0.25);
+        // super.withTimeout(0.25);
         INTAKE.pivotUp();
     }
 

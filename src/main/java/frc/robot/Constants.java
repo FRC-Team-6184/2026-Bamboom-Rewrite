@@ -4,6 +4,7 @@ import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.hardware.Pigeon2;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkMax;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator3d;
 import edu.wpi.first.math.geometry.Pose3d;
@@ -153,8 +154,8 @@ public final class Constants {
 
         // Intake
         public static final TalonFX INTAKE_PIVOT_MOTOR = new TalonFX(CAN_IDs.INTAKE_PIVOT_MOTOR_ID); // Check to make sure this ID is right
-        public static final TalonFX FR_ACTIVE_INTAKE_MOTOR = new TalonFX(CAN_IDs.FR_ACTIVE_INTAKE_ID);
-        public static final TalonFX FL_ACTIVE_INTAKE_MOTOR = new TalonFX(CAN_IDs.FL_ACTIVE_INTAKE_ID);
+        public static final SparkFlex FR_ACTIVE_INTAKE_MOTOR = new SparkFlex(CAN_IDs.FR_ACTIVE_INTAKE_ID, MotorType.kBrushless);
+        public static final SparkFlex FL_ACTIVE_INTAKE_MOTOR = new SparkFlex(CAN_IDs.FL_ACTIVE_INTAKE_ID, MotorType.kBrushless);
 
         
     }
@@ -172,8 +173,8 @@ public final class Constants {
             public static final double MEDIUM = 0.66;
             public static final double HIGH = 1;
 
-            public static final double INTAKE_PIVOT = 0.2;
-            public static final double INTAKE_SPEED = -0.3;
+            public static final double INTAKE_PIVOT = 0.35;
+            public static final double INTAKE_SPEED = -0.7;
 
             public static final double SHOOTER_LOW_SPEED = 1500.0 / 60.0;
             public static final double SHOOTER_HIGH_SPEED = 2500.0 / 60.0;

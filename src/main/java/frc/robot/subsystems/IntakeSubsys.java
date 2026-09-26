@@ -3,9 +3,11 @@ package frc.robot.subsystems;
 import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.revrobotics.spark.SparkFlex;
 
 import edu.wpi.first.networktables.DoubleEntry;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DIO;
 import frc.robot.Constants.DigitalValues.Speeds;
@@ -22,8 +24,8 @@ import frc.robot.Constants.SoftwareObjects;
 public class IntakeSubsys extends SubsystemBase {
     private final DigitalInput INTAKE_LIMIT_SWITCH;
     private final TalonFX INTAKE_PIVOT_MOTOR;
-    private final TalonFX FL_INTAKE_MOTOR;
-    private final TalonFX FR_INTAKE_MOTOR;
+    private final SparkFlex FL_INTAKE_MOTOR;
+    private final SparkFlex FR_INTAKE_MOTOR;
 
     private final Slot0Configs INTAKE_MOTOR_PID_CONFIGS;
     VelocityVoltage intakeMotorSpeedRequest = new VelocityVoltage(0.0);
@@ -51,14 +53,15 @@ public class IntakeSubsys extends SubsystemBase {
         INTAKE_MOTOR_PID_CONFIGS.kV = 0.13043;
         INTAKE_MOTOR_PID_CONFIGS.kD = 0.0; // Just in case the default is not 0
 
-        FL_INTAKE_MOTOR.getConfigurator().apply(INTAKE_MOTOR_PID_CONFIGS);
-        FR_INTAKE_MOTOR.getConfigurator().apply(INTAKE_MOTOR_PID_CONFIGS);
+        // FL_INTAKE_MOTOR.getConfigurator().apply(INTAKE_MOTOR_PID_CONFIGS);
+        // FR_INTAKE_MOTOR.getConfigurator().apply(INTAKE_MOTOR_PID_CONFIGS);
     }
 
     @Override
     public void periodic() {
-        intakeSpeedEntry.set(FL_INTAKE_MOTOR.getVelocity().getValueAsDouble() * 60);
-        intakeSpeedEntry.set(FR_INTAKE_MOTOR.getVelocity().getValueAsDouble() * 60);
+        // intakeSpeedEntry.set(FL_INTAKE_MOTOR.getVelocity().getValueAsDouble() * 60);
+        // intakeSpeedEntry.set(FR_INTAKE_MOTOR.getVelocity().getValueAsDouble() * 60);
+        // FL_INTAKE_MOTOR
     }
 
     // Pivoting Motor
@@ -76,8 +79,10 @@ public class IntakeSubsys extends SubsystemBase {
 
     // Intake Motors
     public void startIntake() {
-        FL_INTAKE_MOTOR.setControl(intakeMotorSpeedRequest.withVelocity(intakeSpeed));
-        FR_INTAKE_MOTOR.setControl(intakeMotorSpeedRequest.withVelocity(intakeSpeed)); // Currently reversed in software, fix after space-coast
+        // FL_INTAKE_MOTOR.setControl(intakeMotorSpeedRequest.withVelocity(intakeSpeed));
+        // FR_INTAKE_MOTOR.setControl(intakeMotorSpeedRequest.withVelocity(intakeSpeed)); // Currently reversed in software, fix after space-coast
+        FL_INTAKE_MOTOR.set(0.4);
+        FR_INTAKE_MOTOR.set(0.4);
     }
 
     public void stopIntake() {
@@ -120,7 +125,8 @@ public class IntakeSubsys extends SubsystemBase {
      * @return An array of the velocities of both the FR (index 0) and FL (index 1) Motors
      */
     public double[] getVelocity() {
-        return new double[]{FL_INTAKE_MOTOR.getVelocity().getValueAsDouble(), FL_INTAKE_MOTOR.getVelocity().getValueAsDouble()};
+        // return new double[]{FL_INTAKE_MOTOR.getVelocity().getValueAsDouble(), FL_INTAKE_MOTOR.getVelocity().getValueAsDouble()};
+        return null;
     }
 
 

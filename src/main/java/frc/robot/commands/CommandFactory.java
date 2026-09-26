@@ -8,6 +8,7 @@ import frc.robot.commands.intake.IntakeDownCmd;
 import frc.robot.commands.intake.IntakeUpCmd;
 import frc.robot.commands.intake.PurgeIntakeCmd;
 import frc.robot.commands.shooter.ActivateShooterCmd;
+import frc.robot.commands.shooter.TestShooterCmd;
 import frc.robot.commands.intake.AutoActivateIntakeCmd;
 import frc.robot.commands.intake.AutoIntakeDownLSCmd;
 
