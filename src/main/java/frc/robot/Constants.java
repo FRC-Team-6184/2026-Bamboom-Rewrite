@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.ShooterSubsys;
 import frc.robot.subsystems.SwerveSubsys;
 import frc.robot.subsystems.IntakeSubsys;
-import frc.robot.subsystems.AutonomousSubsys;
+// import frc.robot.subsystems.AutonomousSubsys;
 import frc.robot.subsystems.VisionSubsys;
 import frc.robot.subsystems.swerve.MAXSwerveModule;
 import frc.robot.subsystems.swerve.SwerveConstants.DriveConstants;
@@ -59,7 +59,7 @@ public final class Constants {
         public static final IntakeSubsys INTAKE_SUBSYS = new IntakeSubsys();
         public static final ShooterSubsys SHOOTER_SUBSYS = new ShooterSubsys();
         public static final SwerveSubsys SWERVE_SUBSYS = new SwerveSubsys();
-        public static final AutonomousSubsys AUTO_SUBSYS = new AutonomousSubsys();
+        // public static final AutonomousSubsys AUTO_SUBSYS = new AutonomousSubsys();
         public static final VisionSubsys VISION_SUBSYS = new VisionSubsys();
     }
 
@@ -227,6 +227,15 @@ public final class Constants {
         PURGE_INTAKE_CMD,
 
         // Shooter
+        CHANGE_RPM_CMD,
+        HIGH_SHOOTER_RPM_CMD,
+        LOW_SHOOTER_RPM_CMD,
+        PRESET_SHOOT_CMD,
+        SHOOT_AT_SPEED_CMD,
+        SHOOTER_CMD,
+        SHOOTER_RPM_CONTROL_CMD,
+        TEMP_SHOOTER_CMD,
+        TEST_SHOOTER_CMD,
         ACTIVATE_SHOOTER_CMD,
 
         // Swerve

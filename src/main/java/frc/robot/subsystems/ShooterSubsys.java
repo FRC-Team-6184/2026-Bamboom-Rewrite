@@ -62,7 +62,6 @@ public class ShooterSubsys extends SubsystemBase {
 
     @Override
     public void periodic() {
-
     }
 
     public void stopShooter() {
