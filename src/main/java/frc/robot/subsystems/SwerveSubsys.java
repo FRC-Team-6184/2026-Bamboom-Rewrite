@@ -111,4 +111,12 @@ public class SwerveSubsys extends SubsystemBase {
         BL_MODULE.setDesiredState(xFormation2);
         BR_MODULE.setDesiredState(xFormation1);
     }
+
+    public void resetGyro() {
+        GYRO.reset();
+    }
+
+    public double getGyroHeading() {
+        return GYRO.getAccumGyroX().getValueAsDouble();
+    }
 }

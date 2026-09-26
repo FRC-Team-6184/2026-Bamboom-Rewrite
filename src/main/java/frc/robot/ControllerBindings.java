@@ -27,6 +27,7 @@ public class ControllerBindings {
     }
 
     private void configureBindings() {
+        DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).onTrue(CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD));
         
         // INTAKE SPEED CHANGE
         CO_DRIVE_CONTROLLER.povUp().onTrue(
