@@ -26,20 +26,20 @@ public class ControllerBindings {
     }
 
     private void configureBindings() {
-        // XFORMATION
-        DRIVE_CONTROLLER.x().onTrue(
-            CommandFactory.getCommand(CommandEnums.XFORMATION_CMD)
-        );
+        // // XFORMATION
+        // DRIVE_CONTROLLER.x().onTrue(
+        //     CommandFactory.getCommand(CommandEnums.XFORMATION_CMD)
+        // );
 
-        // RESET THE GYRO
-        DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).whileTrue(
-            CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD)
-        );
+        // // RESET THE GYRO
+        // DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).whileTrue(
+        //     CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD)
+        // );
 
-        // LOCK ON
-        DRIVE_CONTROLLER.b().whileTrue(
-            CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD)
-        );
+        // // LOCK ON
+        // DRIVE_CONTROLLER.b().whileTrue(
+        //     CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD)
+        // );
 
         // PURGE INTAKE
         CO_DRIVE_CONTROLLER.axisGreaterThan(4, 0.8).whileTrue(
