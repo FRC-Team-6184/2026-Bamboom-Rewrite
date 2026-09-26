@@ -30,11 +30,11 @@ public class ControllerBindings {
         DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).whileTrue(CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD));
         
         // INTAKE SPEED CHANGE
-        CO_DRIVE_CONTROLLER.povUp().onTrue(
+        CO_DRIVE_CONTROLLER.povUp().whileTrue(
             CommandFactory.getCommand(CommandEnums.SHOOTER_INCREASE_SPEED_CMD)
         );
 
-        CO_DRIVE_CONTROLLER.povDown().onTrue(
+        CO_DRIVE_CONTROLLER.povDown().whileTrue(
             CommandFactory.getCommand(CommandEnums.SHOOTER_DECREASE_SPEED_CMD)
         );
 

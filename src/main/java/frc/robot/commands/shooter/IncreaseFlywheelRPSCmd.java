@@ -14,12 +14,11 @@ public class IncreaseFlywheelRPSCmd extends Command {
 
     @Override
     public void initialize() {
-
+        SHOOTER.setFlywheelTargetSpeed(SHOOTER.getFlywheelTargetSpeed() - (50.0 / 60.0));
     }
 
     @Override
     public void execute() {
-        SHOOTER.setFlywheelTargetSpeed(SHOOTER.getFlywheelTargetSpeed() - (50.0 / 60.0));
     }
 
     @Override
