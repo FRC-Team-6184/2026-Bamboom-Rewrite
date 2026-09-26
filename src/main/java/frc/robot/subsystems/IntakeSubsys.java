@@ -62,8 +62,8 @@ public class IntakeSubsys extends SubsystemBase {
 
     // Intake Motors
     public void startIntake() {
-        FL_INTAKE_MOTOR.set(0.5);
-        FR_INTAKE_MOTOR.set(0.5); // Currently reversed in software, fix after space-coast
+        FL_INTAKE_MOTOR.set(0.7);
+        FR_INTAKE_MOTOR.set(0.7); // Currently reversed in software, fix after space-coast
     }
 
     public void stopIntake() {
