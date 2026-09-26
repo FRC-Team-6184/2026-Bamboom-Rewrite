@@ -28,17 +28,18 @@ public class ControllerBindings {
 
     private void configureBindings() {
         DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).onTrue(CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD));
-        // DRIVE_CONTROLLER.x().toggleOnTrue(
-        //     CommandFactory.getCommand(CommandEnums.XFORMATION_CMD));
-
-        // DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).whileTrue(
-        //     CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD));
-
-        // DRIVE_CONTROLLER.b().whileTrue(
-        //     CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD));
         
+        // INTAKE SPEED CHANGE
+        CO_DRIVE_CONTROLLER.povUp().onTrue(
+            CommandFactory.getCommand(CommandEnums.SHOOTER_INCREASE_SPEED_CMD)
+        );
+
+        CO_DRIVE_CONTROLLER.povDown().onTrue(
+            CommandFactory.getCommand(CommandEnums.SHOOTER_DECREASE_SPEED_CMD)
+        );
+
         // ACTIVATE INTAKE
-        CO_DRIVE_CONTROLLER.R1().whileTrue(
+        CO_DRIVE_CONTROLLER.L1().onTrue(
             CommandFactory.getCommand(CommandEnums.ACTIVATE_INTAKE_CMD)
         );
 
@@ -47,37 +48,31 @@ public class ControllerBindings {
             CommandFactory.getCommand(CommandEnums.PURGE_INTAKE_CMD)
         );
 
-        CO_DRIVE_CONTROLLER.circle().whileTrue(CommandFactory.getCommand(CommandEnums.SHOOTER_CMD));
-        // CO_DRIVE_CONTROLLER.povUp().onTrue(cmdIncreaseRPM);
-        // CO_DRIVE_CONTROLLER.povDown().onTrue(cmdDecreaseRPM);
+        // PIVOT INTAKE DOWN
+        CO_DRIVE_CONTROLLER.axisLessThan(1, -0.6).whileFalse(
+            CommandFactory.getCommand(CommandEnums.PIVOT_INTAKE_DOWN_LS_CMD)).whileTrue(
+                CommandFactory.getCommand(CommandEnums.INTAKE_PIVOT_UP_CMD)
+            );
 
-        // cmdIncreaseRPM = new ShooterRPMControlCommand(kShooterSubsystem, 100.0 / 60.0);
-        // cmdDecreaseRPM = new ShooterRPMControlCommand(kShooterSubsystem, -100.0 / 60.0);
+        // ACTIVATE SHOOTER on R1 
+        CO_DRIVE_CONTROLLER.R1().onTrue(
+            CommandFactory.getCommand(CommandEnums.ACTIVATE_SHOOTER_CMD)
+        );
 
-        // CO_DRIVE_CONTROLLER.axisGreaterThan(3, 0.8).whileTrue(cmdBlender);
+        // // XFORMATION
+        // DRIVE_CONTROLLER.x().onTrue(
+        //     CommandFactory.getCommand(CommandEnums.XFORMATION_CMD)
+        // );
 
-        // CO_DRIVE_CONTROLLER.L1().whileTrue(cmdFlywheelHigh);
+        // // RESET THE GYRO
+        // DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).whileTrue(
+        //     CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD)
+        // );
 
-
-        // CO_DRIVE_CONTROLLER.axisGreaterThan(5, 0.12).or(CO_DRIVE_CONTROLLER.axisLessThan(5, -0.12)).whileTrue(cmdIntakePivot); //TODO: make this go to a proportional intake pivot command
-        CO_DRIVE_CONTROLLER.povUp().onTrue(CommandFactory.getCommand(CommandEnums.SHOOTER_INCREASE_SPEED_CMD));
-        CO_DRIVE_CONTROLLER.povDown().onTrue(CommandFactory.getCommand(CommandEnums.SHOOTER_DECREASE_SPEED_CMD));
-
-
-        CO_DRIVE_CONTROLLER.axisLessThan(5, -0.6).whileFalse(CommandFactory.getCommand(CommandEnums.PIVOT_INTAKE_DOWN_LS_CMD)).whileTrue(CommandFactory.getCommand(CommandEnums.INTAKE_PIVOT_UP_CMD));
-
-        // CO_DRIVE_CONTROLLER.povUp().onTrue(cmdIncreaseRPM);
-        // CO_DRIVE_CONTROLLER.povDown().onTrue(cmdDecreaseRPM);
-
-        // CO_DRIVE_CONTROLLER.povUp().whileTrue(cmdFlywheelUp);
-        // CO_DRIVE_CONTROLLER.povDown().whileTrue(cmdFlywheelDown);
-        // CO_DRIVE_CONTROLLER.povLeft().whileTrue(cmdFlywheelLeft);
-        // CO_DRIVE_CONTROLLER.povRight().whileTrue(cmdFlywheelRight);
-
-
-        // CO_DRIVE_CONTROLLER.pov
-
-        // CO_DRIVE_CONTROLLER.povCenter().whileFalse(cmdLowSpeed);
+        // // LOCK ON
+        // DRIVE_CONTROLLER.b().whileTrue(
+        //     CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD)
+        // );
     }
 
 }
