@@ -14,7 +14,7 @@ import frc.robot.commands.shooter.IncreaseFlywheelRPSCmd;
 import frc.robot.commands.shooter.TestShooterCmd;
 import frc.robot.commands.intake.AutoActivateIntakeCmd;
 import frc.robot.commands.intake.AutoIntakeDownLSCmd;
-
+import frc.robot.commands.swerve.ResetGyroCmd;
 // import frc.robot.commands.blender.BlenderCommand;
 // import frc.robot.commands.flywheel.FlywheelHighSpeedCommand;
 // import frc.robot.commands.flywheel.FlywheelLowSpeedCommand;
@@ -78,7 +78,7 @@ public class CommandFactory {
 
                 // Other
                 case LOCK_ON_CMD: return null;
-                case RESET_GYRO_CMD: return null;
+                case RESET_GYRO_CMD: return new ResetGyroCmd(Subsystems.SWERVE_SUBSYS);
 
                 // If invalid cmdEnum
                 default: throw new IllegalArgumentException("Unknown command, check Constants.java");
