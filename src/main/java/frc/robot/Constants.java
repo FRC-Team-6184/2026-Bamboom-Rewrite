@@ -238,6 +238,8 @@ public final class Constants {
         TEMP_SHOOTER_CMD,
         TEST_SHOOTER_CMD,
         ACTIVATE_SHOOTER_CMD,
+        SHOOTER_INCREASE_SPEED_CMD,
+        SHOOTER_DECREASE_SPEED_CMD,
 
         // Swerve
         TELEOP_DRIVE_CMD,

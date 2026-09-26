@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandPS5Controller;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.CommandEnums;
@@ -45,7 +46,7 @@ public class ControllerBindings {
             CommandFactory.getCommand(CommandEnums.PURGE_INTAKE_CMD)
         );
 
-        CO_DRIVE_CONTROLLER.cross().whileTrue(CommandFactory.getCommand(CommandEnums.TEST_SHOOTER_CMD));
+        CO_DRIVE_CONTROLLER.circle().whileTrue(CommandFactory.getCommand(CommandEnums.SHOOTER_CMD));
         // CO_DRIVE_CONTROLLER.povUp().onTrue(cmdIncreaseRPM);
         // CO_DRIVE_CONTROLLER.povDown().onTrue(cmdDecreaseRPM);
 
@@ -58,6 +59,9 @@ public class ControllerBindings {
 
 
         // CO_DRIVE_CONTROLLER.axisGreaterThan(5, 0.12).or(CO_DRIVE_CONTROLLER.axisLessThan(5, -0.12)).whileTrue(cmdIntakePivot); //TODO: make this go to a proportional intake pivot command
+        CO_DRIVE_CONTROLLER.povUp().onTrue(CommandFactory.getCommand(CommandEnums.SHOOTER_INCREASE_SPEED_CMD));
+        CO_DRIVE_CONTROLLER.povDown().onTrue(CommandFactory.getCommand(CommandEnums.SHOOTER_DECREASE_SPEED_CMD));
+
 
         CO_DRIVE_CONTROLLER.axisLessThan(5, -0.6).whileFalse(CommandFactory.getCommand(CommandEnums.PIVOT_INTAKE_DOWN_LS_CMD)).whileTrue(CommandFactory.getCommand(CommandEnums.INTAKE_PIVOT_UP_CMD));
 

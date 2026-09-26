@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.commands.intake.ActivateIntakeCmd;
 import frc.robot.commands.intake.AutoActivateIntakeCmd;
 import frc.robot.commands.intake.IntakeDownLSCmd;
@@ -8,6 +9,8 @@ import frc.robot.commands.intake.IntakeDownCmd;
 import frc.robot.commands.intake.IntakeUpCmd;
 import frc.robot.commands.intake.PurgeIntakeCmd;
 import frc.robot.commands.shooter.ActivateShooterCmd;
+import frc.robot.commands.shooter.DecreaseFlywheelRPSCmd;
+import frc.robot.commands.shooter.IncreaseFlywheelRPSCmd;
 import frc.robot.commands.shooter.TestShooterCmd;
 import frc.robot.commands.intake.AutoActivateIntakeCmd;
 import frc.robot.commands.intake.AutoIntakeDownLSCmd;
@@ -66,6 +69,8 @@ public class CommandFactory {
                 // Shooter
                 case ACTIVATE_SHOOTER_CMD: return new ActivateShooterCmd(Subsystems.SHOOTER_SUBSYS);
                 case TEST_SHOOTER_CMD: return new TestShooterCmd(Subsystems.SHOOTER_SUBSYS);
+                case SHOOTER_INCREASE_SPEED_CMD: return new IncreaseFlywheelRPSCmd(Subsystems.SHOOTER_SUBSYS);
+                case SHOOTER_DECREASE_SPEED_CMD: return new DecreaseFlywheelRPSCmd(Subsystems.SHOOTER_SUBSYS);
 
                 // Swerve
                 case TELEOP_DRIVE_CMD: return new TeleopDriveCmd(Subsystems.SWERVE_SUBSYS);

@@ -17,20 +17,20 @@ public class TestShooterCmd extends Command {
     public void initialize() {
         SHOOTER.setBlenderSpeed(-750.0 / 60.0);
         SHOOTER.setKickerSpeed(2000.0 / 60.0);
-        SHOOTER.setFlywheelSpeed(-500.0 / 60.0);
+        SHOOTER.setFlywheelTargetSpeed(-500.0 / 60.0);
     }
 
     @Override
     public void execute() {
         SHOOTER.setBlenderSpeed(-750.0 / 60.0);
         SHOOTER.setKickerSpeed(2000.0 / 60.0);
-        SHOOTER.setFlywheelSpeed(-500.0 / 60.0);
+        SHOOTER.setFlywheelTargetSpeed(-500.0 / 60.0);
     }
 
     @Override
     public void end(boolean interrupted) {
         SHOOTER.setBlenderSpeed(0.0);
         SHOOTER.setKickerSpeed(0.0);
-        SHOOTER.setFlywheelSpeed(0.0);
+        SHOOTER.setFlywheelTargetSpeed(0.0);
     }
 }

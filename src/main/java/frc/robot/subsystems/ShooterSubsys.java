@@ -39,7 +39,9 @@ public class ShooterSubsys extends SubsystemBase {
     private VelocityVoltage kickerMotorSpeedRequest =new VelocityVoltage(0);
     private VelocityVoltage blenderMotorSpeedRequest = new VelocityVoltage(0);
 
-     private AngularVelocity shooterVelocity = MotorControllers.FLYWHEEL_LEFT_MOTOR.getVelocity().getValue();
+    private AngularVelocity shooterVelocity = MotorControllers.FLYWHEEL_LEFT_MOTOR.getVelocity().getValue();
+
+    private double flywheelTargetSpeed = -750 / 60.0; //Speed of the shooter's flywheels, set here so it can be used by multiple different commands.
 
     public ShooterSubsys() {
         super();
@@ -65,7 +67,7 @@ public class ShooterSubsys extends SubsystemBase {
     }
 
     public void stopShooter() {
-        setFlywheelSpeed(0);
+        setFlywheelTargetSpeed(0);
         setKickerSpeed(0);
         setBlenderSpeed(0);
     }
@@ -90,7 +92,7 @@ public class ShooterSubsys extends SubsystemBase {
     }
 
     public void stopFlywheel() {
-        setFlywheelSpeed(0);
+        setFlywheelTargetSpeed(0);
     }
 
     public void setKickerSpeed(double rps) {
@@ -112,5 +114,11 @@ public class ShooterSubsys extends SubsystemBase {
         setBlenderSpeed(0);
     }
 
-    
+    public void setFlywheelTargetSpeed(double speed) {
+        flywheelTargetSpeed = speed;
+    }
+
+    public double getFlywheelTargetSpeed() {
+        return flywheelTargetSpeed;
+    }
 }
