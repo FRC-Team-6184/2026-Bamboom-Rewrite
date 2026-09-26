@@ -121,4 +121,8 @@ public class ShooterSubsys extends SubsystemBase {
     public double getFlywheelTargetSpeed() {
         return flywheelTargetSpeed;
     }
+
+    public double getFlywheelVelocity() {
+        return FLYWHEEL_LEFT_MOTOR.getVelocity().getValueAsDouble();
+    }
 }
