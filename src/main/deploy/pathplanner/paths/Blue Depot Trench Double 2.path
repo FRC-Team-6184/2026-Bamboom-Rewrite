@@ -1,0 +1,169 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 4.0,
+        "y": 7.3
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 5.0,
+        "y": 7.3
+      },
+      "isLocked": false,
+      "linkedName": "Blue Depot Trench Double 1 End"
+    },
+    {
+      "anchor": {
+        "x": 7.1847008547008535,
+        "y": 7.3
+      },
+      "prevControl": {
+        "x": 6.1847008547008535,
+        "y": 7.3
+      },
+      "nextControl": {
+        "x": 8.184700854700855,
+        "y": 7.3
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.081339031339031,
+        "y": 4.538888888888889
+      },
+      "prevControl": {
+        "x": 7.8058195222873,
+        "y": 4.888638091415637
+      },
+      "nextControl": {
+        "x": 6.706652421652421,
+        "y": 4.358005698005699
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 6.02188034188034,
+        "y": 4.7068518518518525
+      },
+      "prevControl": {
+        "x": 6.357806267806268,
+        "y": 4.358005698005699
+      },
+      "nextControl": {
+        "x": 5.6529834663894905,
+        "y": 5.089937068707733
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.899457576566951,
+        "y": 5.8319210737179485
+      },
+      "prevControl": {
+        "x": 5.781632117434628,
+        "y": 5.545669606308707
+      },
+      "nextControl": {
+        "x": 6.680811965811967,
+        "y": 7.730185185185185
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 6.02188034188034,
+        "y": 7.3
+      },
+      "prevControl": {
+        "x": 6.748417028594758,
+        "y": 7.255661354963669
+      },
+      "nextControl": {
+        "x": 5.324188034188031,
+        "y": 7.342578347578348
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.0,
+        "y": 7.3
+      },
+      "prevControl": {
+        "x": 4.952016666666611,
+        "y": 7.323749999998413
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Blue Depot Trench Double 1 End"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.48,
+      "rotationDegrees": 180.0
+    },
+    {
+      "waypointRelativePos": 1.1127633209417647,
+      "rotationDegrees": -10.0
+    },
+    {
+      "waypointRelativePos": 1.8661710037174633,
+      "rotationDegrees": -10.0
+    },
+    {
+      "waypointRelativePos": 2.6294919454770755,
+      "rotationDegrees": -170.0
+    },
+    {
+      "waypointRelativePos": 4.622057001239138,
+      "rotationDegrees": 180.0
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 5.5950809838032445,
+      "maxWaypointRelativePos": 6.0,
+      "constraints": {
+        "maxVelocity": 1.6,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -173.0
+  },
+  "reversed": false,
+  "folder": null,
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -173.0
+  },
+  "useDefaultConstraints": true
+}

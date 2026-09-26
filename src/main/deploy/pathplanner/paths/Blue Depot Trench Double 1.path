@@ -1,0 +1,133 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.5541168091168096,
+        "y": 7.484700854700854
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 4.554116809116808,
+        "y": 7.484700854700854
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.107179487179487,
+        "y": 7.252136752136753
+      },
+      "prevControl": {
+        "x": 6.121967732359824,
+        "y": 7.423477926888001
+      },
+      "nextControl": {
+        "x": 7.404344729344729,
+        "y": 7.200455840455841
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.8177920227920215,
+        "y": 4.797293447293448
+      },
+      "prevControl": {
+        "x": 8.300591244305537,
+        "y": 5.348588365700704
+      },
+      "nextControl": {
+        "x": 7.071104868913858,
+        "y": 3.944672284644195
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.217600000000001,
+        "y": 7.026544444444443
+      },
+      "prevControl": {
+        "x": 8.759419229924251,
+        "y": 6.726880518879228
+      },
+      "nextControl": {
+        "x": 5.6633611111111115,
+        "y": 7.328622222222221
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.0,
+        "y": 7.3
+      },
+      "prevControl": {
+        "x": 4.907905982905959,
+        "y": 7.407179487179487
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "Blue Depot Trench Double 1 End"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.61,
+      "rotationDegrees": -90.0
+    },
+    {
+      "waypointRelativePos": 1.315473810475805,
+      "rotationDegrees": -10.0
+    },
+    {
+      "waypointRelativePos": 2.099960015993602,
+      "rotationDegrees": -10.0
+    },
+    {
+      "waypointRelativePos": 2.8,
+      "rotationDegrees": 180.0
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 3.6820635872825394,
+      "maxWaypointRelativePos": 4.0,
+      "constraints": {
+        "maxVelocity": 1.6,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0.0,
+    "rotation": -173.0
+  },
+  "reversed": false,
+  "folder": null,
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -90.0
+  },
+  "useDefaultConstraints": true
+}
