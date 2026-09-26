@@ -40,11 +40,6 @@ public class ControllerBindings {
         DRIVE_CONTROLLER.b().whileTrue(
             CommandFactory.getCommand(CommandEnums.LOCK_ON_CMD)
         );
-        
-        // ACTIVATE INTAKE
-        CO_DRIVE_CONTROLLER.R1().onTrue(
-            CommandFactory.getCommand(CommandEnums.ACTIVATE_INTAKE_CMD)
-        );
 
         // PURGE INTAKE
         CO_DRIVE_CONTROLLER.axisGreaterThan(4, 0.8).whileTrue(
