@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.ShooterSubsys;
 import frc.robot.subsystems.SwerveSubsys;
 import frc.robot.subsystems.IntakeSubsys;
-// import frc.robot.subsystems.AutonomousSubsys;
+import frc.robot.subsystems.AutonomousSubsys;
 import frc.robot.subsystems.VisionSubsys;
 import frc.robot.subsystems.swerve.MAXSwerveModule;
 import frc.robot.subsystems.swerve.SwerveConstants.DriveConstants;
@@ -47,6 +47,9 @@ import com.revrobotics.spark.SparkFlex;
  // Note for reece - static not only means this data exists for the entire runtime, but static data is also set up first.
  // That means instantiated, so we don't need to instantiate the Constants class for those things to exist and be ready-to-go.
 public final class Constants {
+    // hack job lol
+    public static final Autonomous auto = new Autonomous();
+
     public static final class Controller {
         public static final int XBOX_P = 0;
         public static final CommandXboxController XBOX = new CommandXboxController(XBOX_P);
@@ -61,8 +64,9 @@ public final class Constants {
         public static final IntakeSubsys INTAKE_SUBSYS = new IntakeSubsys();
         public static final ShooterSubsys SHOOTER_SUBSYS = new ShooterSubsys();
         public static final SwerveSubsys SWERVE_SUBSYS = new SwerveSubsys();
-        // public static final AutonomousSubsys AUTO_SUBSYS = new AutonomousSubsys();
+        public static final AutonomousSubsys AUTO_SUBSYS = new AutonomousSubsys();
         public static final VisionSubsys VISION_SUBSYS = new VisionSubsys();
+
     }
 
     public static final class Gyro {
