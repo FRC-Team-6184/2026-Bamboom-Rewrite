@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.Constants.DIO;
 import frc.robot.Constants.Subsystems;
 import frc.robot.commands.intake.IntakeDownCmd;
 import frc.robot.commands.swerve.TeleopDriveCmd;
@@ -54,6 +55,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Flywheel Target Speed", Subsystems.SHOOTER_SUBSYS.getFlywheelTargetSpeed() * 60.0);
     SmartDashboard.putNumber("Flywheel Speed", Subsystems.SHOOTER_SUBSYS.getFlywheelVelocity() * 60.0);
     SmartDashboard.putNumber("Gyro Heading", Subsystems.SWERVE_SUBSYS.getGyroHeading());
+    SmartDashboard.putBoolean("Limit Switch", DIO.INTAKE_LIMIT_SWITCH.get());
   }
 
   /** This function is called once each time the robot enters Disabled mode. */

@@ -22,12 +22,12 @@ public class IntakeUpCmd extends Command {
 
     @Override
     public void execute() {
-        cancel();
+        // cancel();
     }
 
     @Override
     public void end(boolean interrupted) {
-        INTAKE.pivotStop();
+        // INTAKE.pivotStop();
     }
 
 }

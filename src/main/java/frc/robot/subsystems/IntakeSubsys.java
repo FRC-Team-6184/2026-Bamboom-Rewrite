@@ -50,7 +50,7 @@ public class IntakeSubsys extends SubsystemBase {
 
     // Pivoting Motor
     public void pivotUp() {
-        INTAKE_PIVOT_MOTOR.set(-0.75 * pivotSpeed); // Replace -0.75 with one of the speed constants
+        INTAKE_PIVOT_MOTOR.set(-pivotSpeed * 0.6); // Replace -0.75 with one of the speed constants
     }
 
     public void pivotDown() {
@@ -63,8 +63,8 @@ public class IntakeSubsys extends SubsystemBase {
 
     // Intake Motors
     public void startIntake() {
-        FL_INTAKE_MOTOR.set(0.7);
-        FR_INTAKE_MOTOR.set(0.7); // Currently reversed in software, fix after space-coast
+        FL_INTAKE_MOTOR.set(1.0);
+        FR_INTAKE_MOTOR.set(1.0); // Currently reversed in software, fix after space-coast
     }
 
     public void stopIntake() {

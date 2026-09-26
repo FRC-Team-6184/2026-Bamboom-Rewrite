@@ -27,14 +27,14 @@ public class ControllerBindings {
     }
 
     private void configureBindings() {
-        DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).onTrue(CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD));
+        DRIVE_CONTROLLER.rightBumper().and(DRIVE_CONTROLLER.leftBumper()).whileTrue(CommandFactory.getCommand(CommandEnums.RESET_GYRO_CMD));
         
         // INTAKE SPEED CHANGE
-        CO_DRIVE_CONTROLLER.povUp().onTrue(
+        CO_DRIVE_CONTROLLER.povUp().whileTrue(
             CommandFactory.getCommand(CommandEnums.SHOOTER_INCREASE_SPEED_CMD)
         );
 
-        CO_DRIVE_CONTROLLER.povDown().onTrue(
+        CO_DRIVE_CONTROLLER.povDown().whileTrue(
             CommandFactory.getCommand(CommandEnums.SHOOTER_DECREASE_SPEED_CMD)
         );
 
@@ -49,13 +49,13 @@ public class ControllerBindings {
         );
 
         // PIVOT INTAKE DOWN
-        CO_DRIVE_CONTROLLER.axisLessThan(1, -0.6).whileFalse(
+        CO_DRIVE_CONTROLLER.axisLessThan(5, -0.6).whileFalse(
             CommandFactory.getCommand(CommandEnums.PIVOT_INTAKE_DOWN_LS_CMD)).whileTrue(
                 CommandFactory.getCommand(CommandEnums.INTAKE_PIVOT_UP_CMD)
             );
 
         // ACTIVATE SHOOTER on R1 
-        CO_DRIVE_CONTROLLER.R1().onTrue(
+        CO_DRIVE_CONTROLLER.axisGreaterThan(3, 0.8).whileTrue(
             CommandFactory.getCommand(CommandEnums.ACTIVATE_SHOOTER_CMD)
         );
 

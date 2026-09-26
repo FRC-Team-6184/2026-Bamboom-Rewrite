@@ -56,7 +56,7 @@ public class TeleopDriveCmd extends Command {
         // to work with for now.
         // Realistically, it needs to be possible to make it not field relative, maybe a
         // hold or something.
-        swerve.drive(x, y, rot, false);
+        swerve.drive(-x, y, -rot, true);
     }
 
     @Override

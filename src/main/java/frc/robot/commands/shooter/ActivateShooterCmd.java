@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.Timer;
 public class ActivateShooterCmd extends Command {
     private final ShooterSubsys SHOOTER;
     private AngularVelocity shooterVelocity;
-    private double TARGET_RPS = -750.0 / 60.0; // Eventually wanna move this into constants.java
+    private double TARGET_RPS = -600.0 / 60.0; // Eventually wanna move this into constants.java
     private Timer timer = new Timer();
 
     private boolean flag = false; // rename this sometime
@@ -28,7 +28,7 @@ public class ActivateShooterCmd extends Command {
     @Override
     public void initialize() {
         timer.start();
-        SHOOTER.setFlywheelTargetSpeed(TARGET_RPS);
+        SHOOTER.setFlywheelSpeed(TARGET_RPS);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class ActivateShooterCmd extends Command {
 
         if(flag) {
             shooterVelocity = MotorControllers.FLYWHEEL_LEFT_MOTOR.getVelocity().getValue();
-            SHOOTER.setKickerSpeed(TARGET_RPS);
+            SHOOTER.setKickerSpeed(1500.0 / 60.0);
             SHOOTER.setBlenderSpeed(TARGET_RPS);
         }
     }

@@ -47,8 +47,6 @@ import com.revrobotics.spark.SparkFlex;
  // Note for reece - static not only means this data exists for the entire runtime, but static data is also set up first.
  // That means instantiated, so we don't need to instantiate the Constants class for those things to exist and be ready-to-go.
 public final class Constants {
-    // hack job lol
-    public static final Autonomous auto = new Autonomous();
 
     public static final class Controller {
         public static final int XBOX_P = 0;
@@ -64,7 +62,7 @@ public final class Constants {
         public static final IntakeSubsys INTAKE_SUBSYS = new IntakeSubsys();
         public static final ShooterSubsys SHOOTER_SUBSYS = new ShooterSubsys();
         public static final SwerveSubsys SWERVE_SUBSYS = new SwerveSubsys();
-        public static final AutonomousSubsys AUTO_SUBSYS = new AutonomousSubsys();
+        // public static final AutonomousSubsys AUTO_SUBSYS = new AutonomousSubsys();
         public static final VisionSubsys VISION_SUBSYS = new VisionSubsys();
 
     }
@@ -89,17 +87,17 @@ public final class Constants {
         public static final int BLENDER_MOTOR_ID = 9;
 
         // Swerve
-        public static final int FL_DRIVE_MOTOR_ID = 5;
-        public static final int FL_TURN_MOTOR_ID = 6;
+        public static final int FL_DRIVE_MOTOR_ID = 5; //1
+        public static final int FL_TURN_MOTOR_ID = 6; //2
 
-        public static final int FR_DRIVE_MOTOR_ID = 1;
-        public static final int FR_TURN_MOTOR_ID = 2;
+        public static final int FR_DRIVE_MOTOR_ID = 1; //5
+        public static final int FR_TURN_MOTOR_ID = 2; //6
 
-        public static final int BL_DRIVE_MOTOR_ID = 7;
-        public static final int BL_TURN_MOTOR_ID = 8;
+        public static final int BL_DRIVE_MOTOR_ID = 7; //3
+        public static final int BL_TURN_MOTOR_ID = 8; //4
 
-        public static final int BR_DRIVE_MOTOR_ID = 3;
-        public static final int BR_TURN_MOTOR_ID = 4;
+        public static final int BR_DRIVE_MOTOR_ID = 3; //7
+        public static final int BR_TURN_MOTOR_ID = 4; //8
 
         // Other
         public static final int GYRO_ID = 20;
